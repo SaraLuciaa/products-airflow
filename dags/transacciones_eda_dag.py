@@ -232,57 +232,9 @@ def estadisticas_descriptivas_transacciones(ti):
             df = df.withColumn("num_productos", size(col("productos_array")))
             
             total_transacciones = df.count()
-            
+                        
             # ==================== ESTADÍSTICAS NUMÉRICAS ====================
-            logger.info("  -> Calculando estadísticas numéricas...")
-            
             estadisticas_numericas = {}
-            
-            # CUSTOMER_ID - Cache el dataframe para reutilizarlo
-            df.cache()
-            
-            clientes_unicos = df.select("customer_id").distinct().count()
-            
-            stats_customer = df.select(
-                avg("customer_id").alias("media"),
-                stddev("customer_id").alias("desv_std"),
-                min("customer_id").alias("minimo"),
-                max("customer_id").alias("maximo")
-            ).collect()[0]
-            
-            # Percentiles con accuracy menor para mejor performance
-            percentiles = df.select(
-                percentile_approx("customer_id", [0.25, 0.5, 0.75], 10000).alias("percentiles")
-            ).collect()[0]
-            
-            p25, mediana, p75 = percentiles["percentiles"]
-            
-            # Moda de customer_id (top 1)
-            moda_customer = df.groupBy("customer_id").count() \
-                .orderBy(desc("count")).first()
-            
-            # Outliers de customer_id
-            iqr = p75 - p25
-            outliers_customer = df.filter(
-                (col("customer_id") < p25 - 1.5 * iqr) | 
-                (col("customer_id") > p75 + 1.5 * iqr)
-            ).count()
-            
-            estadisticas_numericas["customer_id"] = {
-                "clientes_unicos": clientes_unicos,
-                "media": round(stats_customer["media"], 2) if stats_customer["media"] else 0,
-                "mediana": int(mediana) if mediana else 0,
-                "moda": moda_customer["customer_id"] if moda_customer else None,
-                "desviacion_estandar": round(stats_customer["desv_std"], 2) if stats_customer["desv_std"] else 0,
-                "minimo": stats_customer["minimo"],
-                "maximo": stats_customer["maximo"],
-                "percentil_25": int(p25) if p25 else 0,
-                "percentil_50_mediana": int(mediana) if mediana else 0,
-                "percentil_75": int(p75) if p75 else 0,
-                "rango_intercuartil_iqr": round(iqr, 2) if iqr else 0,
-                "outliers_count": outliers_customer
-            }
-            
             # NUM_PRODUCTOS (productos por transacción)
             stats_num_prod = df.select(
                 avg("num_productos").alias("media"),
@@ -322,9 +274,24 @@ def estadisticas_descriptivas_transacciones(ti):
             }
             
             # ==================== ESTADÍSTICAS CATEGÓRICAS ====================
+            
             logger.info("  -> Calculando estadísticas categóricas...")
             
             estadisticas_categoricas = {}
+            
+            # CUSTOMER_ID - Cache el dataframe para reutilizarlo
+            df.cache()
+            
+            clientes_unicos = df.select("customer_id").distinct().count()
+            
+            # Moda de customer_id (top 1)
+            moda_customer = df.groupBy("customer_id").count() \
+                .orderBy(desc("count")).first()
+            
+            estadisticas_categoricas["customer_id"] = {
+                "clientes_unicos": clientes_unicos,
+                "moda": moda_customer["customer_id"] if moda_customer else None,
+            }
             
             # TOP PRODUCTOS MÁS COMPRADOS
             logger.info("    -> Analizando productos individuales...")
