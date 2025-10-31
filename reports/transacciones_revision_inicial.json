@@ -1,0 +1,174 @@
+{
+    "102": {
+        "archivo": "102_Tran.csv",
+        "estructura": {
+            "num_transacciones": 314286,
+            "num_columnas": 4,
+            "columnas": [
+                "date",
+                "store_id",
+                "customer_id",
+                "products"
+            ],
+            "tipos_datos": {
+                "date": "DateType()",
+                "store_id": "IntegerType()",
+                "customer_id": "IntegerType()",
+                "products": "StringType()"
+            }
+        },
+        "calidad_datos": {
+            "valores_nulos": {
+                "date": 0,
+                "store_id": 0,
+                "customer_id": 0,
+                "products": 0
+            },
+            "total_nulos": 0,
+            "duplicados_exactos": 0,
+            "duplicados_cliente_fecha": 6,
+            "porcentaje_duplicados_exactos": 0.0
+        },
+        "analisis_productos": {
+            "productos_por_transaccion": {
+                "promedio": 8.15,
+                "minimo": 1,
+                "maximo": 47,
+                "desviacion_estandar": 7.45
+            }
+        },
+        "rango_temporal": {
+            "fecha_inicio": "2013-01-01",
+            "fecha_fin": "2013-06-30"
+        }
+    },
+    "103": {
+        "archivo": "103_Tran.csv",
+        "estructura": {
+            "num_transacciones": 407130,
+            "num_columnas": 4,
+            "columnas": [
+                "date",
+                "store_id",
+                "customer_id",
+                "products"
+            ],
+            "tipos_datos": {
+                "date": "DateType()",
+                "store_id": "IntegerType()",
+                "customer_id": "IntegerType()",
+                "products": "StringType()"
+            }
+        },
+        "calidad_datos": {
+            "valores_nulos": {
+                "date": 0,
+                "store_id": 0,
+                "customer_id": 0,
+                "products": 0
+            },
+            "total_nulos": 0,
+            "duplicados_exactos": 1,
+            "duplicados_cliente_fecha": 10,
+            "porcentaje_duplicados_exactos": 0.0
+        },
+        "analisis_productos": {
+            "productos_por_transaccion": {
+                "promedio": 10.4,
+                "minimo": 1,
+                "maximo": 120,
+                "desviacion_estandar": 11.33
+            }
+        },
+        "rango_temporal": {
+            "fecha_inicio": "2013-01-01",
+            "fecha_fin": "2013-06-30"
+        }
+    },
+    "107": {
+        "archivo": "107_Tran.csv",
+        "estructura": {
+            "num_transacciones": 254633,
+            "num_columnas": 4,
+            "columnas": [
+                "date",
+                "store_id",
+                "customer_id",
+                "products"
+            ],
+            "tipos_datos": {
+                "date": "DateType()",
+                "store_id": "IntegerType()",
+                "customer_id": "IntegerType()",
+                "products": "StringType()"
+            }
+        },
+        "calidad_datos": {
+            "valores_nulos": {
+                "date": 0,
+                "store_id": 0,
+                "customer_id": 0,
+                "products": 0
+            },
+            "total_nulos": 0,
+            "duplicados_exactos": 0,
+            "duplicados_cliente_fecha": 4,
+            "porcentaje_duplicados_exactos": 0.0
+        },
+        "analisis_productos": {
+            "productos_por_transaccion": {
+                "promedio": 9.47,
+                "minimo": 1,
+                "maximo": 96,
+                "desviacion_estandar": 9.86
+            }
+        },
+        "rango_temporal": {
+            "fecha_inicio": "2013-01-01",
+            "fecha_fin": "2013-06-30"
+        }
+    },
+    "110": {
+        "archivo": "110_Tran.csv",
+        "estructura": {
+            "num_transacciones": 132938,
+            "num_columnas": 4,
+            "columnas": [
+                "date",
+                "store_id",
+                "customer_id",
+                "products"
+            ],
+            "tipos_datos": {
+                "date": "DateType()",
+                "store_id": "IntegerType()",
+                "customer_id": "IntegerType()",
+                "products": "StringType()"
+            }
+        },
+        "calidad_datos": {
+            "valores_nulos": {
+                "date": 0,
+                "store_id": 0,
+                "customer_id": 0,
+                "products": 0
+            },
+            "total_nulos": 0,
+            "duplicados_exactos": 0,
+            "duplicados_cliente_fecha": 16,
+            "porcentaje_duplicados_exactos": 0.0
+        },
+        "analisis_productos": {
+            "productos_por_transaccion": {
+                "promedio": 10.41,
+                "minimo": 1,
+                "maximo": 128,
+                "desviacion_estandar": 10.75
+            }
+        },
+        "rango_temporal": {
+            "fecha_inicio": "2013-01-01",
+            "fecha_fin": "2013-06-30"
+        }
+    }
+}

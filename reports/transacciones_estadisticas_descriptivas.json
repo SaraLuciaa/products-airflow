@@ -1,0 +1,1486 @@
+{
+    "102": {
+        "archivo": "102_Tran.csv",
+        "total_transacciones": 314286,
+        "estadisticas_numericas": {
+            "customer_id": {
+                "clientes_unicos": 44593,
+                "media": 505463.45,
+                "mediana": 501814,
+                "moda": 440157,
+                "desviacion_estandar": 290959.65,
+                "minimo": 6,
+                "maximo": 1009515,
+                "percentil_25": 254603,
+                "percentil_50_mediana": 501814,
+                "percentil_75": 758334,
+                "rango_intercuartil_iqr": 503731,
+                "outliers_count": 0
+            },
+            "num_productos_por_transaccion": {
+                "media": 8.15,
+                "mediana": 6,
+                "moda": 1,
+                "desviacion_estandar": 7.45,
+                "minimo": 1,
+                "maximo": 47,
+                "percentil_25": 3,
+                "percentil_50_mediana": 6,
+                "percentil_75": 11,
+                "rango_intercuartil_iqr": 8,
+                "outliers_count": 18356
+            }
+        },
+        "estadisticas_categoricas": {
+            "top_30_productos_mas_vendidos": {
+                "total_productos_vendidos": 2562327,
+                "productos_unicos": 50,
+                "top_30": [
+                    {
+                        "product_id": 2,
+                        "frecuencia_absoluta": 113246,
+                        "frecuencia_relativa_pct": 4.42
+                    },
+                    {
+                        "product_id": 5,
+                        "frecuencia_absoluta": 106786,
+                        "frecuencia_relativa_pct": 4.17
+                    },
+                    {
+                        "product_id": 10,
+                        "frecuencia_absoluta": 104165,
+                        "frecuencia_relativa_pct": 4.07
+                    },
+                    {
+                        "product_id": 3,
+                        "frecuencia_absoluta": 99093,
+                        "frecuencia_relativa_pct": 3.87
+                    },
+                    {
+                        "product_id": 7,
+                        "frecuencia_absoluta": 90150,
+                        "frecuencia_relativa_pct": 3.52
+                    },
+                    {
+                        "product_id": 8,
+                        "frecuencia_absoluta": 90084,
+                        "frecuencia_relativa_pct": 3.52
+                    },
+                    {
+                        "product_id": 1,
+                        "frecuencia_absoluta": 88841,
+                        "frecuencia_relativa_pct": 3.47
+                    },
+                    {
+                        "product_id": 9,
+                        "frecuencia_absoluta": 80490,
+                        "frecuencia_relativa_pct": 3.14
+                    },
+                    {
+                        "product_id": 4,
+                        "frecuencia_absoluta": 80134,
+                        "frecuencia_relativa_pct": 3.13
+                    },
+                    {
+                        "product_id": 13,
+                        "frecuencia_absoluta": 75637,
+                        "frecuencia_relativa_pct": 2.95
+                    },
+                    {
+                        "product_id": 6,
+                        "frecuencia_absoluta": 72967,
+                        "frecuencia_relativa_pct": 2.85
+                    },
+                    {
+                        "product_id": 16,
+                        "frecuencia_absoluta": 72958,
+                        "frecuencia_relativa_pct": 2.85
+                    },
+                    {
+                        "product_id": 19,
+                        "frecuencia_absoluta": 68573,
+                        "frecuencia_relativa_pct": 2.68
+                    },
+                    {
+                        "product_id": 15,
+                        "frecuencia_absoluta": 67226,
+                        "frecuencia_relativa_pct": 2.62
+                    },
+                    {
+                        "product_id": 11,
+                        "frecuencia_absoluta": 67071,
+                        "frecuencia_relativa_pct": 2.62
+                    },
+                    {
+                        "product_id": 12,
+                        "frecuencia_absoluta": 64010,
+                        "frecuencia_relativa_pct": 2.5
+                    },
+                    {
+                        "product_id": 21,
+                        "frecuencia_absoluta": 60604,
+                        "frecuencia_relativa_pct": 2.37
+                    },
+                    {
+                        "product_id": 14,
+                        "frecuencia_absoluta": 60502,
+                        "frecuencia_relativa_pct": 2.36
+                    },
+                    {
+                        "product_id": 17,
+                        "frecuencia_absoluta": 57986,
+                        "frecuencia_relativa_pct": 2.26
+                    },
+                    {
+                        "product_id": 23,
+                        "frecuencia_absoluta": 57739,
+                        "frecuencia_relativa_pct": 2.25
+                    },
+                    {
+                        "product_id": 18,
+                        "frecuencia_absoluta": 51900,
+                        "frecuencia_relativa_pct": 2.03
+                    },
+                    {
+                        "product_id": 20,
+                        "frecuencia_absoluta": 46630,
+                        "frecuencia_relativa_pct": 1.82
+                    },
+                    {
+                        "product_id": 28,
+                        "frecuencia_absoluta": 44629,
+                        "frecuencia_relativa_pct": 1.74
+                    },
+                    {
+                        "product_id": 29,
+                        "frecuencia_absoluta": 43340,
+                        "frecuencia_relativa_pct": 1.69
+                    },
+                    {
+                        "product_id": 22,
+                        "frecuencia_absoluta": 43164,
+                        "frecuencia_relativa_pct": 1.68
+                    },
+                    {
+                        "product_id": 32,
+                        "frecuencia_absoluta": 41717,
+                        "frecuencia_relativa_pct": 1.63
+                    },
+                    {
+                        "product_id": 25,
+                        "frecuencia_absoluta": 39908,
+                        "frecuencia_relativa_pct": 1.56
+                    },
+                    {
+                        "product_id": 24,
+                        "frecuencia_absoluta": 39863,
+                        "frecuencia_relativa_pct": 1.56
+                    },
+                    {
+                        "product_id": 26,
+                        "frecuencia_absoluta": 35574,
+                        "frecuencia_relativa_pct": 1.39
+                    },
+                    {
+                        "product_id": 39,
+                        "frecuencia_absoluta": 33301,
+                        "frecuencia_relativa_pct": 1.3
+                    }
+                ]
+            },
+            "distribucion_temporal_mensual": [
+                {
+                    "year": 2013,
+                    "month": 1,
+                    "num_transacciones": 52960,
+                    "porcentaje": 16.85
+                },
+                {
+                    "year": 2013,
+                    "month": 2,
+                    "num_transacciones": 47654,
+                    "porcentaje": 15.16
+                },
+                {
+                    "year": 2013,
+                    "month": 3,
+                    "num_transacciones": 53664,
+                    "porcentaje": 17.07
+                },
+                {
+                    "year": 2013,
+                    "month": 4,
+                    "num_transacciones": 52252,
+                    "porcentaje": 16.63
+                },
+                {
+                    "year": 2013,
+                    "month": 5,
+                    "num_transacciones": 54030,
+                    "porcentaje": 17.19
+                },
+                {
+                    "year": 2013,
+                    "month": 6,
+                    "num_transacciones": 53726,
+                    "porcentaje": 17.09
+                }
+            ],
+            "distribucion_dia_semana": [
+                {
+                    "dia_semana": "Domingo",
+                    "num_transacciones": 57901,
+                    "porcentaje": 18.42
+                },
+                {
+                    "dia_semana": "Lunes",
+                    "num_transacciones": 41482,
+                    "porcentaje": 13.2
+                },
+                {
+                    "dia_semana": "Martes",
+                    "num_transacciones": 38002,
+                    "porcentaje": 12.09
+                },
+                {
+                    "dia_semana": "Miércoles",
+                    "num_transacciones": 38603,
+                    "porcentaje": 12.28
+                },
+                {
+                    "dia_semana": "Jueves",
+                    "num_transacciones": 54545,
+                    "porcentaje": 17.36
+                },
+                {
+                    "dia_semana": "Viernes",
+                    "num_transacciones": 35769,
+                    "porcentaje": 11.38
+                },
+                {
+                    "dia_semana": "Sábado",
+                    "num_transacciones": 47984,
+                    "porcentaje": 15.27
+                }
+            ],
+            "frecuencia_compra_clientes": {
+                "top_20_frecuencias": [
+                    {
+                        "num_compras": 1,
+                        "num_clientes": 15731,
+                        "porcentaje_clientes": 35.28
+                    },
+                    {
+                        "num_compras": 2,
+                        "num_clientes": 5895,
+                        "porcentaje_clientes": 13.22
+                    },
+                    {
+                        "num_compras": 3,
+                        "num_clientes": 3573,
+                        "porcentaje_clientes": 8.01
+                    },
+                    {
+                        "num_compras": 4,
+                        "num_clientes": 2468,
+                        "porcentaje_clientes": 5.53
+                    },
+                    {
+                        "num_compras": 5,
+                        "num_clientes": 2075,
+                        "porcentaje_clientes": 4.65
+                    },
+                    {
+                        "num_compras": 6,
+                        "num_clientes": 1837,
+                        "porcentaje_clientes": 4.12
+                    },
+                    {
+                        "num_compras": 7,
+                        "num_clientes": 1171,
+                        "porcentaje_clientes": 2.63
+                    },
+                    {
+                        "num_compras": 8,
+                        "num_clientes": 1042,
+                        "porcentaje_clientes": 2.34
+                    },
+                    {
+                        "num_compras": 9,
+                        "num_clientes": 915,
+                        "porcentaje_clientes": 2.05
+                    },
+                    {
+                        "num_compras": 10,
+                        "num_clientes": 819,
+                        "porcentaje_clientes": 1.84
+                    },
+                    {
+                        "num_compras": 11,
+                        "num_clientes": 708,
+                        "porcentaje_clientes": 1.59
+                    },
+                    {
+                        "num_compras": 12,
+                        "num_clientes": 639,
+                        "porcentaje_clientes": 1.43
+                    },
+                    {
+                        "num_compras": 13,
+                        "num_clientes": 584,
+                        "porcentaje_clientes": 1.31
+                    },
+                    {
+                        "num_compras": 15,
+                        "num_clientes": 530,
+                        "porcentaje_clientes": 1.19
+                    },
+                    {
+                        "num_compras": 14,
+                        "num_clientes": 527,
+                        "porcentaje_clientes": 1.18
+                    },
+                    {
+                        "num_compras": 16,
+                        "num_clientes": 491,
+                        "porcentaje_clientes": 1.1
+                    },
+                    {
+                        "num_compras": 18,
+                        "num_clientes": 421,
+                        "porcentaje_clientes": 0.94
+                    },
+                    {
+                        "num_compras": 17,
+                        "num_clientes": 398,
+                        "porcentaje_clientes": 0.89
+                    },
+                    {
+                        "num_compras": 19,
+                        "num_clientes": 343,
+                        "porcentaje_clientes": 0.77
+                    },
+                    {
+                        "num_compras": 21,
+                        "num_clientes": 319,
+                        "porcentaje_clientes": 0.72
+                    }
+                ],
+                "descripcion": "Número de clientes según cuántas veces compraron"
+            }
+        }
+    },
+    "103": {
+        "archivo": "103_Tran.csv",
+        "total_transacciones": 407130,
+        "estadisticas_numericas": {
+            "customer_id": {
+                "clientes_unicos": 64239,
+                "media": 500852.8,
+                "mediana": 498675,
+                "moda": 336296,
+                "desviacion_estandar": 291346.37,
+                "minimo": 6,
+                "maximo": 1009497,
+                "percentil_25": 249568,
+                "percentil_50_mediana": 498675,
+                "percentil_75": 750244,
+                "rango_intercuartil_iqr": 500676,
+                "outliers_count": 0
+            },
+            "num_productos_por_transaccion": {
+                "media": 10.4,
+                "mediana": 6,
+                "moda": 1,
+                "desviacion_estandar": 11.33,
+                "minimo": 1,
+                "maximo": 120,
+                "percentil_25": 3,
+                "percentil_50_mediana": 6,
+                "percentil_75": 13,
+                "rango_intercuartil_iqr": 10,
+                "outliers_count": 34131
+            }
+        },
+        "estadisticas_categoricas": {
+            "top_30_productos_mas_vendidos": {
+                "total_productos_vendidos": 4234392,
+                "productos_unicos": 447,
+                "top_30": [
+                    {
+                        "product_id": 10,
+                        "frecuencia_absoluta": 109054,
+                        "frecuencia_relativa_pct": 2.58
+                    },
+                    {
+                        "product_id": 5,
+                        "frecuencia_absoluta": 101296,
+                        "frecuencia_relativa_pct": 2.39
+                    },
+                    {
+                        "product_id": 4,
+                        "frecuencia_absoluta": 93708,
+                        "frecuencia_relativa_pct": 2.21
+                    },
+                    {
+                        "product_id": 12,
+                        "frecuencia_absoluta": 90166,
+                        "frecuencia_relativa_pct": 2.13
+                    },
+                    {
+                        "product_id": 8,
+                        "frecuencia_absoluta": 88345,
+                        "frecuencia_relativa_pct": 2.09
+                    },
+                    {
+                        "product_id": 6,
+                        "frecuencia_absoluta": 88139,
+                        "frecuencia_relativa_pct": 2.08
+                    },
+                    {
+                        "product_id": 3,
+                        "frecuencia_absoluta": 79598,
+                        "frecuencia_relativa_pct": 1.88
+                    },
+                    {
+                        "product_id": 11,
+                        "frecuencia_absoluta": 76768,
+                        "frecuencia_relativa_pct": 1.81
+                    },
+                    {
+                        "product_id": 19,
+                        "frecuencia_absoluta": 76744,
+                        "frecuencia_relativa_pct": 1.81
+                    },
+                    {
+                        "product_id": 7,
+                        "frecuencia_absoluta": 75068,
+                        "frecuencia_relativa_pct": 1.77
+                    },
+                    {
+                        "product_id": 9,
+                        "frecuencia_absoluta": 68990,
+                        "frecuencia_relativa_pct": 1.63
+                    },
+                    {
+                        "product_id": 18,
+                        "frecuencia_absoluta": 65632,
+                        "frecuencia_relativa_pct": 1.55
+                    },
+                    {
+                        "product_id": 16,
+                        "frecuencia_absoluta": 63008,
+                        "frecuencia_relativa_pct": 1.49
+                    },
+                    {
+                        "product_id": 26,
+                        "frecuencia_absoluta": 62399,
+                        "frecuencia_relativa_pct": 1.47
+                    },
+                    {
+                        "product_id": 14,
+                        "frecuencia_absoluta": 61718,
+                        "frecuencia_relativa_pct": 1.46
+                    },
+                    {
+                        "product_id": 13,
+                        "frecuencia_absoluta": 59777,
+                        "frecuencia_relativa_pct": 1.41
+                    },
+                    {
+                        "product_id": 15,
+                        "frecuencia_absoluta": 58903,
+                        "frecuencia_relativa_pct": 1.39
+                    },
+                    {
+                        "product_id": 17,
+                        "frecuencia_absoluta": 54912,
+                        "frecuencia_relativa_pct": 1.3
+                    },
+                    {
+                        "product_id": 21,
+                        "frecuencia_absoluta": 53339,
+                        "frecuencia_relativa_pct": 1.26
+                    },
+                    {
+                        "product_id": 68,
+                        "frecuencia_absoluta": 52348,
+                        "frecuencia_relativa_pct": 1.24
+                    },
+                    {
+                        "product_id": 25,
+                        "frecuencia_absoluta": 48020,
+                        "frecuencia_relativa_pct": 1.13
+                    },
+                    {
+                        "product_id": 29,
+                        "frecuencia_absoluta": 46916,
+                        "frecuencia_relativa_pct": 1.11
+                    },
+                    {
+                        "product_id": 32,
+                        "frecuencia_absoluta": 43678,
+                        "frecuencia_relativa_pct": 1.03
+                    },
+                    {
+                        "product_id": 28,
+                        "frecuencia_absoluta": 43329,
+                        "frecuencia_relativa_pct": 1.02
+                    },
+                    {
+                        "product_id": 22,
+                        "frecuencia_absoluta": 41253,
+                        "frecuencia_relativa_pct": 0.97
+                    },
+                    {
+                        "product_id": 30,
+                        "frecuencia_absoluta": 38978,
+                        "frecuencia_relativa_pct": 0.92
+                    },
+                    {
+                        "product_id": 24,
+                        "frecuencia_absoluta": 38959,
+                        "frecuencia_relativa_pct": 0.92
+                    },
+                    {
+                        "product_id": 48,
+                        "frecuencia_absoluta": 37801,
+                        "frecuencia_relativa_pct": 0.89
+                    },
+                    {
+                        "product_id": 49,
+                        "frecuencia_absoluta": 34460,
+                        "frecuencia_relativa_pct": 0.81
+                    },
+                    {
+                        "product_id": 33,
+                        "frecuencia_absoluta": 34164,
+                        "frecuencia_relativa_pct": 0.81
+                    }
+                ]
+            },
+            "distribucion_temporal_mensual": [
+                {
+                    "year": 2013,
+                    "month": 1,
+                    "num_transacciones": 68743,
+                    "porcentaje": 16.88
+                },
+                {
+                    "year": 2013,
+                    "month": 2,
+                    "num_transacciones": 62112,
+                    "porcentaje": 15.26
+                },
+                {
+                    "year": 2013,
+                    "month": 3,
+                    "num_transacciones": 67922,
+                    "porcentaje": 16.68
+                },
+                {
+                    "year": 2013,
+                    "month": 4,
+                    "num_transacciones": 67153,
+                    "porcentaje": 16.49
+                },
+                {
+                    "year": 2013,
+                    "month": 5,
+                    "num_transacciones": 70169,
+                    "porcentaje": 17.24
+                },
+                {
+                    "year": 2013,
+                    "month": 6,
+                    "num_transacciones": 71031,
+                    "porcentaje": 17.45
+                }
+            ],
+            "distribucion_dia_semana": [
+                {
+                    "dia_semana": "Domingo",
+                    "num_transacciones": 71207,
+                    "porcentaje": 17.49
+                },
+                {
+                    "dia_semana": "Lunes",
+                    "num_transacciones": 51732,
+                    "porcentaje": 12.71
+                },
+                {
+                    "dia_semana": "Martes",
+                    "num_transacciones": 64270,
+                    "porcentaje": 15.79
+                },
+                {
+                    "dia_semana": "Miércoles",
+                    "num_transacciones": 51892,
+                    "porcentaje": 12.75
+                },
+                {
+                    "dia_semana": "Jueves",
+                    "num_transacciones": 49726,
+                    "porcentaje": 12.21
+                },
+                {
+                    "dia_semana": "Viernes",
+                    "num_transacciones": 48383,
+                    "porcentaje": 11.88
+                },
+                {
+                    "dia_semana": "Sábado",
+                    "num_transacciones": 69920,
+                    "porcentaje": 17.17
+                }
+            ],
+            "frecuencia_compra_clientes": {
+                "top_20_frecuencias": [
+                    {
+                        "num_compras": 1,
+                        "num_clientes": 24812,
+                        "porcentaje_clientes": 38.62
+                    },
+                    {
+                        "num_compras": 2,
+                        "num_clientes": 9286,
+                        "porcentaje_clientes": 14.46
+                    },
+                    {
+                        "num_compras": 3,
+                        "num_clientes": 5218,
+                        "porcentaje_clientes": 8.12
+                    },
+                    {
+                        "num_compras": 4,
+                        "num_clientes": 3469,
+                        "porcentaje_clientes": 5.4
+                    },
+                    {
+                        "num_compras": 5,
+                        "num_clientes": 2623,
+                        "porcentaje_clientes": 4.08
+                    },
+                    {
+                        "num_compras": 6,
+                        "num_clientes": 2079,
+                        "porcentaje_clientes": 3.24
+                    },
+                    {
+                        "num_compras": 7,
+                        "num_clientes": 1731,
+                        "porcentaje_clientes": 2.69
+                    },
+                    {
+                        "num_compras": 8,
+                        "num_clientes": 1430,
+                        "porcentaje_clientes": 2.23
+                    },
+                    {
+                        "num_compras": 9,
+                        "num_clientes": 1231,
+                        "porcentaje_clientes": 1.92
+                    },
+                    {
+                        "num_compras": 10,
+                        "num_clientes": 999,
+                        "porcentaje_clientes": 1.56
+                    },
+                    {
+                        "num_compras": 11,
+                        "num_clientes": 984,
+                        "porcentaje_clientes": 1.53
+                    },
+                    {
+                        "num_compras": 12,
+                        "num_clientes": 840,
+                        "porcentaje_clientes": 1.31
+                    },
+                    {
+                        "num_compras": 13,
+                        "num_clientes": 752,
+                        "porcentaje_clientes": 1.17
+                    },
+                    {
+                        "num_compras": 14,
+                        "num_clientes": 681,
+                        "porcentaje_clientes": 1.06
+                    },
+                    {
+                        "num_compras": 15,
+                        "num_clientes": 602,
+                        "porcentaje_clientes": 0.94
+                    },
+                    {
+                        "num_compras": 16,
+                        "num_clientes": 543,
+                        "porcentaje_clientes": 0.85
+                    },
+                    {
+                        "num_compras": 17,
+                        "num_clientes": 521,
+                        "porcentaje_clientes": 0.81
+                    },
+                    {
+                        "num_compras": 18,
+                        "num_clientes": 481,
+                        "porcentaje_clientes": 0.75
+                    },
+                    {
+                        "num_compras": 19,
+                        "num_clientes": 418,
+                        "porcentaje_clientes": 0.65
+                    },
+                    {
+                        "num_compras": 20,
+                        "num_clientes": 381,
+                        "porcentaje_clientes": 0.59
+                    }
+                ],
+                "descripcion": "Número de clientes según cuántas veces compraron"
+            }
+        }
+    },
+    "107": {
+        "archivo": "107_Tran.csv",
+        "total_transacciones": 254633,
+        "estadisticas_numericas": {
+            "customer_id": {
+                "clientes_unicos": 31437,
+                "media": 496340.16,
+                "mediana": 490192,
+                "moda": 336296,
+                "desviacion_estandar": 290028.02,
+                "minimo": 13,
+                "maximo": 1009509,
+                "percentil_25": 250359,
+                "percentil_50_mediana": 490192,
+                "percentil_75": 742815,
+                "rango_intercuartil_iqr": 492456,
+                "outliers_count": 0
+            },
+            "num_productos_por_transaccion": {
+                "media": 9.47,
+                "mediana": 6,
+                "moda": 1,
+                "desviacion_estandar": 9.86,
+                "minimo": 1,
+                "maximo": 96,
+                "percentil_25": 3,
+                "percentil_50_mediana": 6,
+                "percentil_75": 12,
+                "rango_intercuartil_iqr": 9,
+                "outliers_count": 20936
+            }
+        },
+        "estadisticas_categoricas": {
+            "top_30_productos_mas_vendidos": {
+                "total_productos_vendidos": 2410968,
+                "productos_unicos": 445,
+                "top_30": [
+                    {
+                        "product_id": 21,
+                        "frecuencia_absoluta": 66820,
+                        "frecuencia_relativa_pct": 2.77
+                    },
+                    {
+                        "product_id": 6,
+                        "frecuencia_absoluta": 65727,
+                        "frecuencia_relativa_pct": 2.73
+                    },
+                    {
+                        "product_id": 16,
+                        "frecuencia_absoluta": 62657,
+                        "frecuencia_relativa_pct": 2.6
+                    },
+                    {
+                        "product_id": 3,
+                        "frecuencia_absoluta": 62473,
+                        "frecuencia_relativa_pct": 2.59
+                    },
+                    {
+                        "product_id": 5,
+                        "frecuencia_absoluta": 57093,
+                        "frecuencia_relativa_pct": 2.37
+                    },
+                    {
+                        "product_id": 4,
+                        "frecuencia_absoluta": 53202,
+                        "frecuencia_relativa_pct": 2.21
+                    },
+                    {
+                        "product_id": 11,
+                        "frecuencia_absoluta": 51984,
+                        "frecuencia_relativa_pct": 2.16
+                    },
+                    {
+                        "product_id": 37,
+                        "frecuencia_absoluta": 49512,
+                        "frecuencia_relativa_pct": 2.05
+                    },
+                    {
+                        "product_id": 20,
+                        "frecuencia_absoluta": 48086,
+                        "frecuencia_relativa_pct": 1.99
+                    },
+                    {
+                        "product_id": 8,
+                        "frecuencia_absoluta": 46562,
+                        "frecuencia_relativa_pct": 1.93
+                    },
+                    {
+                        "product_id": 30,
+                        "frecuencia_absoluta": 45554,
+                        "frecuencia_relativa_pct": 1.89
+                    },
+                    {
+                        "product_id": 23,
+                        "frecuencia_absoluta": 44442,
+                        "frecuencia_relativa_pct": 1.84
+                    },
+                    {
+                        "product_id": 52,
+                        "frecuencia_absoluta": 43831,
+                        "frecuencia_relativa_pct": 1.82
+                    },
+                    {
+                        "product_id": 10,
+                        "frecuencia_absoluta": 41580,
+                        "frecuencia_relativa_pct": 1.72
+                    },
+                    {
+                        "product_id": 27,
+                        "frecuencia_absoluta": 40502,
+                        "frecuencia_relativa_pct": 1.68
+                    },
+                    {
+                        "product_id": 9,
+                        "frecuencia_absoluta": 39473,
+                        "frecuencia_relativa_pct": 1.64
+                    },
+                    {
+                        "product_id": 22,
+                        "frecuencia_absoluta": 37305,
+                        "frecuencia_relativa_pct": 1.55
+                    },
+                    {
+                        "product_id": 7,
+                        "frecuencia_absoluta": 36938,
+                        "frecuencia_relativa_pct": 1.53
+                    },
+                    {
+                        "product_id": 14,
+                        "frecuencia_absoluta": 36656,
+                        "frecuencia_relativa_pct": 1.52
+                    },
+                    {
+                        "product_id": 26,
+                        "frecuencia_absoluta": 36211,
+                        "frecuencia_relativa_pct": 1.5
+                    },
+                    {
+                        "product_id": 17,
+                        "frecuencia_absoluta": 33961,
+                        "frecuencia_relativa_pct": 1.41
+                    },
+                    {
+                        "product_id": 13,
+                        "frecuencia_absoluta": 30301,
+                        "frecuencia_relativa_pct": 1.26
+                    },
+                    {
+                        "product_id": 24,
+                        "frecuencia_absoluta": 29843,
+                        "frecuencia_relativa_pct": 1.24
+                    },
+                    {
+                        "product_id": 32,
+                        "frecuencia_absoluta": 29723,
+                        "frecuencia_relativa_pct": 1.23
+                    },
+                    {
+                        "product_id": 41,
+                        "frecuencia_absoluta": 29434,
+                        "frecuencia_relativa_pct": 1.22
+                    },
+                    {
+                        "product_id": 33,
+                        "frecuencia_absoluta": 29398,
+                        "frecuencia_relativa_pct": 1.22
+                    },
+                    {
+                        "product_id": 15,
+                        "frecuencia_absoluta": 28304,
+                        "frecuencia_relativa_pct": 1.17
+                    },
+                    {
+                        "product_id": 12,
+                        "frecuencia_absoluta": 27427,
+                        "frecuencia_relativa_pct": 1.14
+                    },
+                    {
+                        "product_id": 28,
+                        "frecuencia_absoluta": 26726,
+                        "frecuencia_relativa_pct": 1.11
+                    },
+                    {
+                        "product_id": 55,
+                        "frecuencia_absoluta": 26620,
+                        "frecuencia_relativa_pct": 1.1
+                    }
+                ]
+            },
+            "distribucion_temporal_mensual": [
+                {
+                    "year": 2013,
+                    "month": 1,
+                    "num_transacciones": 40957,
+                    "porcentaje": 16.08
+                },
+                {
+                    "year": 2013,
+                    "month": 2,
+                    "num_transacciones": 40990,
+                    "porcentaje": 16.1
+                },
+                {
+                    "year": 2013,
+                    "month": 3,
+                    "num_transacciones": 44520,
+                    "porcentaje": 17.48
+                },
+                {
+                    "year": 2013,
+                    "month": 4,
+                    "num_transacciones": 42445,
+                    "porcentaje": 16.67
+                },
+                {
+                    "year": 2013,
+                    "month": 5,
+                    "num_transacciones": 41396,
+                    "porcentaje": 16.26
+                },
+                {
+                    "year": 2013,
+                    "month": 6,
+                    "num_transacciones": 44325,
+                    "porcentaje": 17.41
+                }
+            ],
+            "distribucion_dia_semana": [
+                {
+                    "dia_semana": "Domingo",
+                    "num_transacciones": 34189,
+                    "porcentaje": 13.43
+                },
+                {
+                    "dia_semana": "Lunes",
+                    "num_transacciones": 33009,
+                    "porcentaje": 12.96
+                },
+                {
+                    "dia_semana": "Martes",
+                    "num_transacciones": 32645,
+                    "porcentaje": 12.82
+                },
+                {
+                    "dia_semana": "Miércoles",
+                    "num_transacciones": 31711,
+                    "porcentaje": 12.45
+                },
+                {
+                    "dia_semana": "Jueves",
+                    "num_transacciones": 38438,
+                    "porcentaje": 15.1
+                },
+                {
+                    "dia_semana": "Viernes",
+                    "num_transacciones": 40471,
+                    "porcentaje": 15.89
+                },
+                {
+                    "dia_semana": "Sábado",
+                    "num_transacciones": 44170,
+                    "porcentaje": 17.35
+                }
+            ],
+            "frecuencia_compra_clientes": {
+                "top_20_frecuencias": [
+                    {
+                        "num_compras": 1,
+                        "num_clientes": 5590,
+                        "porcentaje_clientes": 17.78
+                    },
+                    {
+                        "num_compras": 2,
+                        "num_clientes": 3601,
+                        "porcentaje_clientes": 11.45
+                    },
+                    {
+                        "num_compras": 3,
+                        "num_clientes": 2701,
+                        "porcentaje_clientes": 8.59
+                    },
+                    {
+                        "num_compras": 4,
+                        "num_clientes": 2356,
+                        "porcentaje_clientes": 7.49
+                    },
+                    {
+                        "num_compras": 5,
+                        "num_clientes": 1985,
+                        "porcentaje_clientes": 6.31
+                    },
+                    {
+                        "num_compras": 6,
+                        "num_clientes": 1715,
+                        "porcentaje_clientes": 5.46
+                    },
+                    {
+                        "num_compras": 7,
+                        "num_clientes": 1552,
+                        "porcentaje_clientes": 4.94
+                    },
+                    {
+                        "num_compras": 8,
+                        "num_clientes": 1323,
+                        "porcentaje_clientes": 4.21
+                    },
+                    {
+                        "num_compras": 9,
+                        "num_clientes": 1239,
+                        "porcentaje_clientes": 3.94
+                    },
+                    {
+                        "num_compras": 10,
+                        "num_clientes": 1049,
+                        "porcentaje_clientes": 3.34
+                    },
+                    {
+                        "num_compras": 11,
+                        "num_clientes": 974,
+                        "porcentaje_clientes": 3.1
+                    },
+                    {
+                        "num_compras": 12,
+                        "num_clientes": 825,
+                        "porcentaje_clientes": 2.62
+                    },
+                    {
+                        "num_compras": 13,
+                        "num_clientes": 740,
+                        "porcentaje_clientes": 2.35
+                    },
+                    {
+                        "num_compras": 14,
+                        "num_clientes": 660,
+                        "porcentaje_clientes": 2.1
+                    },
+                    {
+                        "num_compras": 15,
+                        "num_clientes": 563,
+                        "porcentaje_clientes": 1.79
+                    },
+                    {
+                        "num_compras": 17,
+                        "num_clientes": 495,
+                        "porcentaje_clientes": 1.57
+                    },
+                    {
+                        "num_compras": 16,
+                        "num_clientes": 485,
+                        "porcentaje_clientes": 1.54
+                    },
+                    {
+                        "num_compras": 18,
+                        "num_clientes": 414,
+                        "porcentaje_clientes": 1.32
+                    },
+                    {
+                        "num_compras": 19,
+                        "num_clientes": 312,
+                        "porcentaje_clientes": 0.99
+                    },
+                    {
+                        "num_compras": 21,
+                        "num_clientes": 301,
+                        "porcentaje_clientes": 0.96
+                    }
+                ],
+                "descripcion": "Número de clientes según cuántas veces compraron"
+            }
+        }
+    },
+    "110": {
+        "archivo": "110_Tran.csv",
+        "total_transacciones": 132938,
+        "estadisticas_numericas": {
+            "customer_id": {
+                "clientes_unicos": 18144,
+                "media": 505302.55,
+                "mediana": 504414,
+                "moda": 841357,
+                "desviacion_estandar": 295124.44,
+                "minimo": 5,
+                "maximo": 1009458,
+                "percentil_25": 243870,
+                "percentil_50_mediana": 504414,
+                "percentil_75": 766905,
+                "rango_intercuartil_iqr": 523035,
+                "outliers_count": 0
+            },
+            "num_productos_por_transaccion": {
+                "media": 10.41,
+                "mediana": 7,
+                "moda": 2,
+                "desviacion_estandar": 10.75,
+                "minimo": 1,
+                "maximo": 128,
+                "percentil_25": 3,
+                "percentil_50_mediana": 7,
+                "percentil_75": 13,
+                "rango_intercuartil_iqr": 10,
+                "outliers_count": 10242
+            }
+        },
+        "estadisticas_categoricas": {
+            "top_30_productos_mas_vendidos": {
+                "total_productos_vendidos": 1384106,
+                "productos_unicos": 446,
+                "top_30": [
+                    {
+                        "product_id": 10,
+                        "frecuencia_absoluta": 35514,
+                        "frecuencia_relativa_pct": 2.57
+                    },
+                    {
+                        "product_id": 5,
+                        "frecuencia_absoluta": 35351,
+                        "frecuencia_relativa_pct": 2.55
+                    },
+                    {
+                        "product_id": 4,
+                        "frecuencia_absoluta": 33374,
+                        "frecuencia_relativa_pct": 2.41
+                    },
+                    {
+                        "product_id": 8,
+                        "frecuencia_absoluta": 28908,
+                        "frecuencia_relativa_pct": 2.09
+                    },
+                    {
+                        "product_id": 3,
+                        "frecuencia_absoluta": 28691,
+                        "frecuencia_relativa_pct": 2.07
+                    },
+                    {
+                        "product_id": 12,
+                        "frecuencia_absoluta": 28478,
+                        "frecuencia_relativa_pct": 2.06
+                    },
+                    {
+                        "product_id": 6,
+                        "frecuencia_absoluta": 27811,
+                        "frecuencia_relativa_pct": 2.01
+                    },
+                    {
+                        "product_id": 11,
+                        "frecuencia_absoluta": 26145,
+                        "frecuencia_relativa_pct": 1.89
+                    },
+                    {
+                        "product_id": 16,
+                        "frecuencia_absoluta": 25536,
+                        "frecuencia_relativa_pct": 1.84
+                    },
+                    {
+                        "product_id": 7,
+                        "frecuencia_absoluta": 23721,
+                        "frecuencia_relativa_pct": 1.71
+                    },
+                    {
+                        "product_id": 9,
+                        "frecuencia_absoluta": 23527,
+                        "frecuencia_relativa_pct": 1.7
+                    },
+                    {
+                        "product_id": 18,
+                        "frecuencia_absoluta": 23128,
+                        "frecuencia_relativa_pct": 1.67
+                    },
+                    {
+                        "product_id": 21,
+                        "frecuencia_absoluta": 21451,
+                        "frecuencia_relativa_pct": 1.55
+                    },
+                    {
+                        "product_id": 14,
+                        "frecuencia_absoluta": 20758,
+                        "frecuencia_relativa_pct": 1.5
+                    },
+                    {
+                        "product_id": 19,
+                        "frecuencia_absoluta": 20166,
+                        "frecuencia_relativa_pct": 1.46
+                    },
+                    {
+                        "product_id": 17,
+                        "frecuencia_absoluta": 19546,
+                        "frecuencia_relativa_pct": 1.41
+                    },
+                    {
+                        "product_id": 13,
+                        "frecuencia_absoluta": 19452,
+                        "frecuencia_relativa_pct": 1.41
+                    },
+                    {
+                        "product_id": 15,
+                        "frecuencia_absoluta": 18721,
+                        "frecuencia_relativa_pct": 1.35
+                    },
+                    {
+                        "product_id": 26,
+                        "frecuencia_absoluta": 17610,
+                        "frecuencia_relativa_pct": 1.27
+                    },
+                    {
+                        "product_id": 30,
+                        "frecuencia_absoluta": 16448,
+                        "frecuencia_relativa_pct": 1.19
+                    },
+                    {
+                        "product_id": 32,
+                        "frecuencia_absoluta": 15847,
+                        "frecuencia_relativa_pct": 1.14
+                    },
+                    {
+                        "product_id": 68,
+                        "frecuencia_absoluta": 15468,
+                        "frecuencia_relativa_pct": 1.12
+                    },
+                    {
+                        "product_id": 25,
+                        "frecuencia_absoluta": 14742,
+                        "frecuencia_relativa_pct": 1.07
+                    },
+                    {
+                        "product_id": 22,
+                        "frecuencia_absoluta": 14454,
+                        "frecuencia_relativa_pct": 1.04
+                    },
+                    {
+                        "product_id": 24,
+                        "frecuencia_absoluta": 14257,
+                        "frecuencia_relativa_pct": 1.03
+                    },
+                    {
+                        "product_id": 45,
+                        "frecuencia_absoluta": 13350,
+                        "frecuencia_relativa_pct": 0.96
+                    },
+                    {
+                        "product_id": 29,
+                        "frecuencia_absoluta": 13317,
+                        "frecuencia_relativa_pct": 0.96
+                    },
+                    {
+                        "product_id": 33,
+                        "frecuencia_absoluta": 13134,
+                        "frecuencia_relativa_pct": 0.95
+                    },
+                    {
+                        "product_id": 20,
+                        "frecuencia_absoluta": 13043,
+                        "frecuencia_relativa_pct": 0.94
+                    },
+                    {
+                        "product_id": 36,
+                        "frecuencia_absoluta": 13018,
+                        "frecuencia_relativa_pct": 0.94
+                    }
+                ]
+            },
+            "distribucion_temporal_mensual": [
+                {
+                    "year": 2013,
+                    "month": 1,
+                    "num_transacciones": 22256,
+                    "porcentaje": 16.74
+                },
+                {
+                    "year": 2013,
+                    "month": 2,
+                    "num_transacciones": 20015,
+                    "porcentaje": 15.06
+                },
+                {
+                    "year": 2013,
+                    "month": 3,
+                    "num_transacciones": 23207,
+                    "porcentaje": 17.46
+                },
+                {
+                    "year": 2013,
+                    "month": 4,
+                    "num_transacciones": 20782,
+                    "porcentaje": 15.63
+                },
+                {
+                    "year": 2013,
+                    "month": 5,
+                    "num_transacciones": 22604,
+                    "porcentaje": 17.0
+                },
+                {
+                    "year": 2013,
+                    "month": 6,
+                    "num_transacciones": 24074,
+                    "porcentaje": 18.11
+                }
+            ],
+            "distribucion_dia_semana": [
+                {
+                    "dia_semana": "Domingo",
+                    "num_transacciones": 28109,
+                    "porcentaje": 21.14
+                },
+                {
+                    "dia_semana": "Lunes",
+                    "num_transacciones": 16222,
+                    "porcentaje": 12.2
+                },
+                {
+                    "dia_semana": "Martes",
+                    "num_transacciones": 15822,
+                    "porcentaje": 11.9
+                },
+                {
+                    "dia_semana": "Miércoles",
+                    "num_transacciones": 15039,
+                    "porcentaje": 11.31
+                },
+                {
+                    "dia_semana": "Jueves",
+                    "num_transacciones": 16057,
+                    "porcentaje": 12.08
+                },
+                {
+                    "dia_semana": "Viernes",
+                    "num_transacciones": 14748,
+                    "porcentaje": 11.09
+                },
+                {
+                    "dia_semana": "Sábado",
+                    "num_transacciones": 26941,
+                    "porcentaje": 20.27
+                }
+            ],
+            "frecuencia_compra_clientes": {
+                "top_20_frecuencias": [
+                    {
+                        "num_compras": 1,
+                        "num_clientes": 6811,
+                        "porcentaje_clientes": 37.54
+                    },
+                    {
+                        "num_compras": 2,
+                        "num_clientes": 2265,
+                        "porcentaje_clientes": 12.48
+                    },
+                    {
+                        "num_compras": 3,
+                        "num_clientes": 1301,
+                        "porcentaje_clientes": 7.17
+                    },
+                    {
+                        "num_compras": 4,
+                        "num_clientes": 1023,
+                        "porcentaje_clientes": 5.64
+                    },
+                    {
+                        "num_compras": 5,
+                        "num_clientes": 743,
+                        "porcentaje_clientes": 4.1
+                    },
+                    {
+                        "num_compras": 6,
+                        "num_clientes": 645,
+                        "porcentaje_clientes": 3.55
+                    },
+                    {
+                        "num_compras": 7,
+                        "num_clientes": 506,
+                        "porcentaje_clientes": 2.79
+                    },
+                    {
+                        "num_compras": 8,
+                        "num_clientes": 417,
+                        "porcentaje_clientes": 2.3
+                    },
+                    {
+                        "num_compras": 9,
+                        "num_clientes": 394,
+                        "porcentaje_clientes": 2.17
+                    },
+                    {
+                        "num_compras": 10,
+                        "num_clientes": 360,
+                        "porcentaje_clientes": 1.98
+                    },
+                    {
+                        "num_compras": 11,
+                        "num_clientes": 301,
+                        "porcentaje_clientes": 1.66
+                    },
+                    {
+                        "num_compras": 12,
+                        "num_clientes": 251,
+                        "porcentaje_clientes": 1.38
+                    },
+                    {
+                        "num_compras": 13,
+                        "num_clientes": 231,
+                        "porcentaje_clientes": 1.27
+                    },
+                    {
+                        "num_compras": 14,
+                        "num_clientes": 203,
+                        "porcentaje_clientes": 1.12
+                    },
+                    {
+                        "num_compras": 15,
+                        "num_clientes": 196,
+                        "porcentaje_clientes": 1.08
+                    },
+                    {
+                        "num_compras": 16,
+                        "num_clientes": 165,
+                        "porcentaje_clientes": 0.91
+                    },
+                    {
+                        "num_compras": 18,
+                        "num_clientes": 157,
+                        "porcentaje_clientes": 0.87
+                    },
+                    {
+                        "num_compras": 17,
+                        "num_clientes": 149,
+                        "porcentaje_clientes": 0.82
+                    },
+                    {
+                        "num_compras": 19,
+                        "num_clientes": 130,
+                        "porcentaje_clientes": 0.72
+                    },
+                    {
+                        "num_compras": 22,
+                        "num_clientes": 121,
+                        "porcentaje_clientes": 0.67
+                    }
+                ],
+                "descripcion": "Número de clientes según cuántas veces compraron"
+            }
+        }
+    }
+}
