@@ -3,20 +3,6 @@
         "archivo": "102_Tran.csv",
         "total_transacciones": 314286,
         "estadisticas_numericas": {
-            "customer_id": {
-                "clientes_unicos": 44593,
-                "media": 505463.45,
-                "mediana": 501814,
-                "moda": 440157,
-                "desviacion_estandar": 290959.65,
-                "minimo": 6,
-                "maximo": 1009515,
-                "percentil_25": 254603,
-                "percentil_50_mediana": 501814,
-                "percentil_75": 758334,
-                "rango_intercuartil_iqr": 503731,
-                "outliers_count": 0
-            },
             "num_productos_por_transaccion": {
                 "media": 8.15,
                 "mediana": 6,
@@ -27,11 +13,14 @@
                 "percentil_25": 3,
                 "percentil_50_mediana": 6,
                 "percentil_75": 11,
-                "rango_intercuartil_iqr": 8,
-                "outliers_count": 18356
+                "rango_intercuartil_iqr": 8
             }
         },
         "estadisticas_categoricas": {
+            "customer_id": {
+                "clientes_unicos": 44593,
+                "moda": 440157
+            },
             "top_30_productos_mas_vendidos": {
                 "total_productos_vendidos": 2562327,
                 "productos_unicos": 50,
@@ -374,20 +363,6 @@
         "archivo": "103_Tran.csv",
         "total_transacciones": 407130,
         "estadisticas_numericas": {
-            "customer_id": {
-                "clientes_unicos": 64239,
-                "media": 500852.8,
-                "mediana": 498675,
-                "moda": 336296,
-                "desviacion_estandar": 291346.37,
-                "minimo": 6,
-                "maximo": 1009497,
-                "percentil_25": 249568,
-                "percentil_50_mediana": 498675,
-                "percentil_75": 750244,
-                "rango_intercuartil_iqr": 500676,
-                "outliers_count": 0
-            },
             "num_productos_por_transaccion": {
                 "media": 10.4,
                 "mediana": 6,
@@ -403,6 +378,10 @@
             }
         },
         "estadisticas_categoricas": {
+            "customer_id": {
+                "clientes_unicos": 64239,
+                "moda": 336296
+            },
             "top_30_productos_mas_vendidos": {
                 "total_productos_vendidos": 4234392,
                 "productos_unicos": 447,
@@ -745,20 +724,6 @@
         "archivo": "107_Tran.csv",
         "total_transacciones": 254633,
         "estadisticas_numericas": {
-            "customer_id": {
-                "clientes_unicos": 31437,
-                "media": 496340.16,
-                "mediana": 490192,
-                "moda": 336296,
-                "desviacion_estandar": 290028.02,
-                "minimo": 13,
-                "maximo": 1009509,
-                "percentil_25": 250359,
-                "percentil_50_mediana": 490192,
-                "percentil_75": 742815,
-                "rango_intercuartil_iqr": 492456,
-                "outliers_count": 0
-            },
             "num_productos_por_transaccion": {
                 "media": 9.47,
                 "mediana": 6,
@@ -774,6 +739,10 @@
             }
         },
         "estadisticas_categoricas": {
+            "customer_id": {
+                "clientes_unicos": 31437,
+                "moda": 336296
+            },
             "top_30_productos_mas_vendidos": {
                 "total_productos_vendidos": 2410968,
                 "productos_unicos": 445,
@@ -1116,20 +1085,6 @@
         "archivo": "110_Tran.csv",
         "total_transacciones": 132938,
         "estadisticas_numericas": {
-            "customer_id": {
-                "clientes_unicos": 18144,
-                "media": 505302.55,
-                "mediana": 504414,
-                "moda": 841357,
-                "desviacion_estandar": 295124.44,
-                "minimo": 5,
-                "maximo": 1009458,
-                "percentil_25": 243870,
-                "percentil_50_mediana": 504414,
-                "percentil_75": 766905,
-                "rango_intercuartil_iqr": 523035,
-                "outliers_count": 0
-            },
             "num_productos_por_transaccion": {
                 "media": 10.41,
                 "mediana": 7,
@@ -1145,6 +1100,10 @@
             }
         },
         "estadisticas_categoricas": {
+            "customer_id": {
+                "clientes_unicos": 18144,
+                "moda": 841357
+            },
             "top_30_productos_mas_vendidos": {
                 "total_productos_vendidos": 1384106,
                 "productos_unicos": 446,
