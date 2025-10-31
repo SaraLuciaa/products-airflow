@@ -57,110 +57,120 @@ def revision_inicial_transacciones(ti):
         
         logger.info(f"Archivos de transacciones encontrados: {len(trans_files)}")
         
-        for archivo in trans_files:
-            logger.info(f"\nAnalizando: {archivo}")
-            file_path = os.path.join(trans_path, archivo)
-            
-            # Leer CSV sin header (los archivos no tienen encabezado)
-            df = spark.read.csv(file_path, header=False, inferSchema=False, sep="|")
-            
-            # Asignar nombres de columnas
-            df = df.toDF("date", "store_id", "customer_id", "products")
-            
-            # Convertir tipos de datos apropiados
-            from pyspark.sql.functions import to_date
-            df = df.withColumn("date", to_date(col("date"), "yyyy-MM-dd"))
-            df = df.withColumn("store_id", col("store_id").cast(IntegerType()))
-            df = df.withColumn("customer_id", col("customer_id").cast(IntegerType()))
-            
-            num_filas = df.count()
-            num_columnas = len(df.columns)
-            
-            logger.info(f"  -> Total de transacciones: {num_filas:,}")
-            
-            # Tipos de datos
-            tipos_datos = {field.name: str(field.dataType) for field in df.schema.fields}
-            
-            # ==================== VALORES NULOS ====================
-            nulos_por_columna = {}
-            for columna in ["date", "store_id", "customer_id", "products"]:
-                if columna == "products":
-                    # Para productos, verificar vacíos o nulls
-                    nulos = df.filter(
-                        col(columna).isNull() | 
-                        (col(columna) == "") | 
-                        (length(col(columna)) == 0)
-                    ).count()
-                else:
-                    nulos = df.filter(col(columna).isNull()).count()
-                nulos_por_columna[columna] = nulos
-            
-            # ==================== DUPLICADOS ====================
-            # Duplicados exactos (toda la fila)
-            num_duplicados_exactos = num_filas - df.dropDuplicates().count()
-            
-            # Duplicados por cliente-fecha (mismo cliente comprando varias veces el mismo día)
-            num_duplicados_cliente_fecha = num_filas - df.dropDuplicates(["date", "customer_id"]).count()
-            
-            # ==================== ANÁLISIS DE PRODUCTOS ====================
-            # Añadir columna con el conteo de productos por transacción
-            df = df.withColumn("productos_array", split(col("products"), " "))
-            df = df.withColumn("num_productos", size(col("productos_array")))
-            
-            # Estadísticas de productos por transacción
-            from pyspark.sql.functions import avg, min, max, stddev
-            stats_productos = df.select(
-                avg("num_productos").alias("promedio"),
-                min("num_productos").alias("minimo"),
-                max("num_productos").alias("maximo"),
-                stddev("num_productos").alias("desv_std")
-            ).collect()[0]
-            
-            # ==================== ANÁLISIS TEMPORAL ====================
-            from pyspark.sql.functions import year, month, dayofweek
-            df = df.withColumn("year", year(col("date")))
-            df = df.withColumn("month", month(col("date")))
-            
-            rango_fechas = df.select(
-                min("date").alias("fecha_min"),
-                max("date").alias("fecha_max")
-            ).collect()[0]
-            
-            # ==================== GUARDAR RESULTADOS ====================
-            store_id = archivo.split("_")[0]
-            
-            resultados[store_id] = {
-                "archivo": archivo,
-                "estructura": {
-                    "num_transacciones": num_filas,
-                    "num_columnas": num_columnas,
-                    "columnas": df.columns[:4],  # Solo las 4 principales
-                    "tipos_datos": tipos_datos
-                },
-                "calidad_datos": {
-                    "valores_nulos": nulos_por_columna,
-                    "total_nulos": sum(nulos_por_columna.values()),
-                    "duplicados_exactos": num_duplicados_exactos,
-                    "duplicados_cliente_fecha": num_duplicados_cliente_fecha,
-                    "porcentaje_duplicados_exactos": round(num_duplicados_exactos / num_filas * 100, 2),
-                },
-                "analisis_productos": {
-                    "productos_por_transaccion": {
-                        "promedio": round(stats_productos["promedio"], 2),
-                        "minimo": stats_productos["minimo"],
-                        "maximo": stats_productos["maximo"],
-                        "desviacion_estandar": round(stats_productos["desv_std"], 2) if stats_productos["desv_std"] else 0
-                    }
-                },
-                "rango_temporal": {
-                    "fecha_inicio": str(rango_fechas["fecha_min"]),
-                    "fecha_fin": str(rango_fechas["fecha_max"])
+        if not trans_files:
+            logger.warning("No se encontraron archivos de transacciones")
+            ti.xcom_push(key="revision_inicial", value={})
+            return
+        
+        # Crear lista de rutas completas
+        file_paths = [os.path.join(trans_path, f) for f in trans_files]
+        
+        logger.info(f"\n>>> ANÁLISIS GLOBAL - Uniendo todos los archivos CSV <<<")
+        
+        # Leer TODOS los CSV en un único DataFrame
+        df = spark.read.csv(file_paths, header=False, inferSchema=False, sep="|")
+        
+        # Asignar nombres de columnas
+        df = df.toDF("date", "store_id", "customer_id", "products")
+        
+        # Convertir tipos de datos apropiados
+        from pyspark.sql.functions import to_date
+        df = df.withColumn("date", to_date(col("date"), "yyyy-MM-dd"))
+        df = df.withColumn("store_id", col("store_id").cast(IntegerType()))
+        df = df.withColumn("customer_id", col("customer_id").cast(IntegerType()))
+        
+        num_filas = df.count()
+        num_columnas = len(df.columns)
+        
+        logger.info(f"  -> Total de transacciones GLOBALES: {num_filas:,}")
+        
+        # Tipos de datos
+        tipos_datos = {field.name: str(field.dataType) for field in df.schema.fields}
+        
+        # ==================== VALORES NULOS ====================
+        nulos_por_columna = {}
+        for columna in ["date", "store_id", "customer_id", "products"]:
+            if columna == "products":
+                # Para productos, verificar vacíos o nulls
+                nulos = df.filter(
+                    col(columna).isNull() | 
+                    (col(columna) == "") | 
+                    (length(col(columna)) == 0)
+                ).count()
+            else:
+                nulos = df.filter(col(columna).isNull()).count()
+            nulos_por_columna[columna] = nulos
+        
+        # ==================== DUPLICADOS ====================
+        # Duplicados exactos (toda la fila)
+        num_duplicados_exactos = num_filas - df.dropDuplicates().count()
+        
+        # Duplicados por cliente-fecha (mismo cliente comprando varias veces el mismo día)
+        num_duplicados_cliente_fecha = num_filas - df.dropDuplicates(["date", "customer_id"]).count()
+        
+        # ==================== ANÁLISIS DE PRODUCTOS ====================
+        # Añadir columna con el conteo de productos por transacción
+        df = df.withColumn("productos_array", split(col("products"), " "))
+        df = df.withColumn("num_productos", size(col("productos_array")))
+        
+        # Estadísticas de productos por transacción
+        from pyspark.sql.functions import avg, min, max, stddev
+        stats_productos = df.select(
+            avg("num_productos").alias("promedio"),
+            min("num_productos").alias("minimo"),
+            max("num_productos").alias("maximo"),
+            stddev("num_productos").alias("desv_std")
+        ).collect()[0]
+        
+        # ==================== ANÁLISIS TEMPORAL ====================
+        from pyspark.sql.functions import year, month, dayofweek
+        df = df.withColumn("year", year(col("date")))
+        df = df.withColumn("month", month(col("date")))
+        
+        rango_fechas = df.select(
+            min("date").alias("fecha_min"),
+            max("date").alias("fecha_max")
+        ).collect()[0]
+        
+        # Conteo de tiendas únicas
+        tiendas_unicas = df.select("store_id").distinct().count()
+        
+        # ==================== GUARDAR RESULTADOS GLOBALES ====================
+        resultados["global"] = {
+            "archivos_procesados": trans_files,
+            "num_archivos": len(trans_files),
+            "tiendas_unicas": tiendas_unicas,
+            "estructura": {
+                "num_transacciones": num_filas,
+                "num_columnas": num_columnas,
+                "columnas": df.columns[:4],  # Solo las 4 principales
+                "tipos_datos": tipos_datos
+            },
+            "calidad_datos": {
+                "valores_nulos": nulos_por_columna,
+                "total_nulos": sum(nulos_por_columna.values()),
+                "duplicados_exactos": num_duplicados_exactos,
+                "duplicados_cliente_fecha": num_duplicados_cliente_fecha,
+                "porcentaje_duplicados_exactos": round(num_duplicados_exactos / num_filas * 100, 2) if num_filas > 0 else 0,
+            },
+            "analisis_productos": {
+                "productos_por_transaccion": {
+                    "promedio": round(stats_productos["promedio"], 2) if stats_productos["promedio"] else 0,
+                    "minimo": stats_productos["minimo"],
+                    "maximo": stats_productos["maximo"],
+                    "desviacion_estandar": round(stats_productos["desv_std"], 2) if stats_productos["desv_std"] else 0
                 }
+            },
+            "rango_temporal": {
+                "fecha_inicio": str(rango_fechas["fecha_min"]),
+                "fecha_fin": str(rango_fechas["fecha_max"])
             }
-            
-            logger.info(f"  -> Nulos totales: {sum(nulos_por_columna.values())}")
-            logger.info(f"  -> Duplicados exactos: {num_duplicados_exactos}")
-            logger.info(f"  -> Productos/transacción (promedio): {stats_productos['promedio']:.2f}")
+        }
+        
+        logger.info(f"  -> Nulos totales: {sum(nulos_por_columna.values())}")
+        logger.info(f"  -> Duplicados exactos: {num_duplicados_exactos}")
+        logger.info(f"  -> Productos/transacción (promedio): {stats_productos['promedio']:.2f}")
+        logger.info(f"  -> Tiendas únicas: {tiendas_unicas}")
         
         # Guardar resultados
         os.makedirs(REPORTS_PATH, exist_ok=True)
@@ -168,7 +178,7 @@ def revision_inicial_transacciones(ti):
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(resultados, f, indent=4, ensure_ascii=False)
         
-        logger.info(f"\nRevisión inicial guardada en: {output_path}")
+        logger.info(f"\nRevisión inicial GLOBAL guardada en: {output_path}")
         ti.xcom_push(key="revision_inicial", value=resultados)
         
     except Exception as e:
@@ -216,212 +226,237 @@ def estadisticas_descriptivas_transacciones(ti):
         trans_path = os.path.join(DATASET_PATH, "Transactions")
         trans_files = [f for f in os.listdir(trans_path) if f.endswith("_Tran.csv")]
         
-        for archivo in trans_files:
-            logger.info(f"\nProcesando: {archivo}")
-            file_path = os.path.join(trans_path, archivo)
-            store_id = archivo.split("_")[0]
-            
-            # Leer y preparar datos
-            df = spark.read.csv(file_path, header=False, inferSchema=False, sep="|")
-            df = df.toDF("date", "store_id", "customer_id", "products")
-            
-            df = df.withColumn("date", to_date(col("date"), "yyyy-MM-dd"))
-            df = df.withColumn("store_id", col("store_id").cast(IntegerType()))
-            df = df.withColumn("customer_id", col("customer_id").cast(IntegerType()))
-            df = df.withColumn("productos_array", split(col("products"), " "))
-            df = df.withColumn("num_productos", size(col("productos_array")))
-            
-            total_transacciones = df.count()
-                        
-            # ==================== ESTADÍSTICAS NUMÉRICAS ====================
-            estadisticas_numericas = {}
-            # NUM_PRODUCTOS (productos por transacción)
-            stats_num_prod = df.select(
-                avg("num_productos").alias("media"),
-                stddev("num_productos").alias("desv_std"),
-                min("num_productos").alias("minimo"),
-                max("num_productos").alias("maximo")
-            ).collect()[0]
-            
-            # Percentiles con accuracy menor
-            percentiles_np = df.select(
-                percentile_approx("num_productos", [0.25, 0.5, 0.75], 10000).alias("percentiles")
-            ).collect()[0]
-            
-            p25_np, mediana_np, p75_np = percentiles_np["percentiles"]
-            
-            moda_num_prod = df.groupBy("num_productos").count() \
-                .orderBy(desc("count")).first()
-            
-            iqr_np = p75_np - p25_np
-            outliers_num_prod = df.filter(
-                (col("num_productos") < p25_np - 1.5 * iqr_np) | 
-                (col("num_productos") > p75_np + 1.5 * iqr_np)
-            ).count()
-            
-            estadisticas_numericas["num_productos_por_transaccion"] = {
-                "media": round(stats_num_prod["media"], 2) if stats_num_prod["media"] else 0,
-                "mediana": int(mediana_np) if mediana_np else 0,
-                "moda": moda_num_prod["num_productos"] if moda_num_prod else None,
-                "desviacion_estandar": round(stats_num_prod["desv_std"], 2) if stats_num_prod["desv_std"] else 0,
-                "minimo": stats_num_prod["minimo"],
-                "maximo": stats_num_prod["maximo"],
-                "percentil_25": int(p25_np) if p25_np else 0,
-                "percentil_50_mediana": int(mediana_np) if mediana_np else 0,
-                "percentil_75": int(p75_np) if p75_np else 0,
-                "rango_intercuartil_iqr": round(iqr_np, 2) if iqr_np else 0,
-                "outliers_count": outliers_num_prod
-            }
-            
-            # ==================== ESTADÍSTICAS CATEGÓRICAS ====================
-            
-            logger.info("  -> Calculando estadísticas categóricas...")
-            
-            estadisticas_categoricas = {}
-            
-            # CUSTOMER_ID - Cache el dataframe para reutilizarlo
-            df.cache()
-            
-            clientes_unicos = df.select("customer_id").distinct().count()
-            
-            # Moda de customer_id (top 1)
-            moda_customer = df.groupBy("customer_id").count() \
-                .orderBy(desc("count")).first()
-            
-            estadisticas_categoricas["customer_id"] = {
-                "clientes_unicos": clientes_unicos,
-                "moda": moda_customer["customer_id"] if moda_customer else None,
-            }
-            
-            # TOP PRODUCTOS MÁS COMPRADOS
-            logger.info("    -> Analizando productos individuales...")
-            
-            df_productos_exploded = df.select(
-                explode(split(col("products"), " ")).alias("product_id")
-            )
-            
-            # Convertir product_id a integer y filtrar nulos
-            df_productos_exploded = df_productos_exploded.withColumn(
-                "product_id", col("product_id").cast(IntegerType())
-            ).filter(col("product_id").isNotNull())
-            
-            # Cache para reutilizar
-            df_productos_exploded.cache()
-            
-            total_productos_vendidos = df_productos_exploded.count()
-            logger.info(f"    -> Total productos vendidos: {total_productos_vendidos:,}")
-            
-            # Top 30 productos más vendidos
-            top_productos = df_productos_exploded.groupBy("product_id") \
-                .count() \
-                .withColumnRenamed("count", "frecuencia") \
-                .orderBy(desc("frecuencia")) \
-                .limit(30) \
-                .collect()
-            
-            productos_data = []
-            for row in top_productos:
-                producto_id = row["product_id"]
-                frecuencia = row["frecuencia"]
-                porcentaje = round((frecuencia / total_productos_vendidos) * 100, 2)
-                productos_data.append({
-                    "product_id": producto_id,
-                    "frecuencia_absoluta": frecuencia,
-                    "frecuencia_relativa_pct": porcentaje
-                })
-            
-            estadisticas_categoricas["top_30_productos_mas_vendidos"] = {
-                "total_productos_vendidos": total_productos_vendidos,
-                "productos_unicos": df_productos_exploded.select("product_id").distinct().count(),
-                "top_30": productos_data
-            }
-            
-            # DISTRIBUCIÓN TEMPORAL - Por mes
-            df = df.withColumn("year", year(col("date")))
-            df = df.withColumn("month", month(col("date")))
-            df = df.withColumn("dia_semana", dayofweek(col("date")))
-            
-            dist_mensual = df.groupBy("year", "month") \
-                .agg(count("*").alias("num_transacciones")) \
-                .orderBy("year", "month") \
-                .collect()
-            
-            mensual_data = []
-            for row in dist_mensual:
-                num_trans = row["num_transacciones"]
-                porcentaje = round((num_trans / total_transacciones) * 100, 2)
-                mensual_data.append({
-                    "year": row["year"],
-                    "month": row["month"],
-                    "num_transacciones": num_trans,
-                    "porcentaje": porcentaje
-                })
-            
-            estadisticas_categoricas["distribucion_temporal_mensual"] = mensual_data
-            
-            # DISTRIBUCIÓN POR DÍA DE LA SEMANA
-            dist_semanal = df.groupBy("dia_semana") \
-                .agg(count("*").alias("num_transacciones")) \
-                .orderBy("dia_semana") \
-                .collect()
-            
-            dias_semana = {1: "Domingo", 2: "Lunes", 3: "Martes", 4: "Miércoles", 
-                          5: "Jueves", 6: "Viernes", 7: "Sábado"}
-            
-            semanal_data = []
-            for row in dist_semanal:
-                num_trans = row["num_transacciones"]
-                porcentaje = round((num_trans / total_transacciones) * 100, 2)
-                semanal_data.append({
-                    "dia_semana": dias_semana.get(row["dia_semana"], "Desconocido"),
-                    "num_transacciones": num_trans,
-                    "porcentaje": porcentaje
-                })
-            
-            estadisticas_categoricas["distribucion_dia_semana"] = semanal_data
-            
-            # FRECUENCIA DE COMPRA POR CLIENTE
-            compras_por_cliente = df.groupBy("customer_id") \
-                .agg(count("*").alias("num_compras")) \
-                .select("num_compras")
-            
-            freq_compras = compras_por_cliente.groupBy("num_compras") \
-                .agg(count("*").alias("num_clientes")) \
-                .orderBy(desc("num_clientes")) \
-                .limit(20) \
-                .collect()
-            
-            freq_data = []
-            for row in freq_compras:
-                num_compras = row["num_compras"]
-                num_clientes = row["num_clientes"]
-                porcentaje = round((num_clientes / clientes_unicos) * 100, 2)
-                freq_data.append({
-                    "num_compras": num_compras,
-                    "num_clientes": num_clientes,
-                    "porcentaje_clientes": porcentaje
-                })
-            
-            estadisticas_categoricas["frecuencia_compra_clientes"] = {
-                "top_20_frecuencias": freq_data,
-                "descripcion": "Número de clientes según cuántas veces compraron"
-            }
-            
-            # ==================== GUARDAR RESULTADOS ====================
-            estadisticas[store_id] = {
-                "archivo": archivo,
-                "total_transacciones": total_transacciones,
-                "estadisticas_numericas": estadisticas_numericas,
-                "estadisticas_categoricas": estadisticas_categoricas
-            }
-            
-            logger.info(f"  -> Clientes únicos: {clientes_unicos}")
-            logger.info(f"  -> Productos únicos vendidos: {estadisticas_categoricas['top_30_productos_mas_vendidos']['productos_unicos']}")
-            
-            # Liberar memoria
-            df.unpersist()
-            df_productos_exploded.unpersist()
-            logger.info(f"  Completado análisis de tienda {store_id}")
+        if not trans_files:
+            logger.warning("No se encontraron archivos de transacciones")
+            ti.xcom_push(key="estadisticas", value={})
+            return
+        
+        # Crear lista de rutas completas
+        file_paths = [os.path.join(trans_path, f) for f in trans_files]
+        
+        logger.info(f"\n>>> ESTADÍSTICAS GLOBALES - Procesando todos los archivos juntos <<<")
+        
+        # Leer TODOS los CSV en un único DataFrame
+        df = spark.read.csv(file_paths, header=False, inferSchema=False, sep="|")
+        df = df.toDF("date", "store_id", "customer_id", "products")
+        
+        df = df.withColumn("date", to_date(col("date"), "yyyy-MM-dd"))
+        df = df.withColumn("store_id", col("store_id").cast(IntegerType()))
+        df = df.withColumn("customer_id", col("customer_id").cast(IntegerType()))
+        df = df.withColumn("productos_array", split(col("products"), " "))
+        df = df.withColumn("num_productos", size(col("productos_array")))
+        
+        total_transacciones = df.count()
+        logger.info(f"  -> Total transacciones globales: {total_transacciones:,}")
+                    
+        # ==================== ESTADÍSTICAS NUMÉRICAS ====================
+        estadisticas_numericas = {}
+        # NUM_PRODUCTOS (productos por transacción)
+        stats_num_prod = df.select(
+            avg("num_productos").alias("media"),
+            stddev("num_productos").alias("desv_std"),
+            min("num_productos").alias("minimo"),
+            max("num_productos").alias("maximo")
+        ).collect()[0]
+        
+        # Percentiles con accuracy menor
+        percentiles_np = df.select(
+            percentile_approx("num_productos", [0.25, 0.5, 0.75], 10000).alias("percentiles")
+        ).collect()[0]
+        
+        p25_np, mediana_np, p75_np = percentiles_np["percentiles"]
+        
+        moda_num_prod = df.groupBy("num_productos").count() \
+            .orderBy(desc("count")).first()
+        
+        iqr_np = p75_np - p25_np
+        outliers_num_prod = df.filter(
+            (col("num_productos") < p25_np - 1.5 * iqr_np) | 
+            (col("num_productos") > p75_np + 1.5 * iqr_np)
+        ).count()
+        
+        estadisticas_numericas["num_productos_por_transaccion"] = {
+            "media": round(stats_num_prod["media"], 2) if stats_num_prod["media"] else 0,
+            "mediana": int(mediana_np) if mediana_np else 0,
+            "moda": moda_num_prod["num_productos"] if moda_num_prod else None,
+            "desviacion_estandar": round(stats_num_prod["desv_std"], 2) if stats_num_prod["desv_std"] else 0,
+            "minimo": stats_num_prod["minimo"],
+            "maximo": stats_num_prod["maximo"],
+            "percentil_25": int(p25_np) if p25_np else 0,
+            "percentil_50_mediana": int(mediana_np) if mediana_np else 0,
+            "percentil_75": int(p75_np) if p75_np else 0,
+            "rango_intercuartil_iqr": round(iqr_np, 2) if iqr_np else 0,
+            "outliers_count": outliers_num_prod
+        }
+        
+        # ==================== ESTADÍSTICAS CATEGÓRICAS ====================
+        
+        logger.info("  -> Calculando estadísticas categóricas globales...")
+        
+        estadisticas_categoricas = {}
+        
+        # CUSTOMER_ID - Cache el dataframe para reutilizarlo
+        df.cache()
+        
+        clientes_unicos = df.select("customer_id").distinct().count()
+        
+        # Moda de customer_id (top 1)
+        moda_customer = df.groupBy("customer_id").count() \
+            .orderBy(desc("count")).first()
+        
+        estadisticas_categoricas["customer_id"] = {
+            "clientes_unicos": clientes_unicos,
+            "moda": moda_customer["customer_id"] if moda_customer else None,
+        }
+        
+        # TOP PRODUCTOS MÁS COMPRADOS
+        logger.info("    -> Analizando productos individuales (global)...")
+        
+        df_productos_exploded = df.select(
+            explode(split(col("products"), " ")).alias("product_id")
+        )
+        
+        # Convertir product_id a integer y filtrar nulos
+        df_productos_exploded = df_productos_exploded.withColumn(
+            "product_id", col("product_id").cast(IntegerType())
+        ).filter(col("product_id").isNotNull())
+        
+        # Cache para reutilizar
+        df_productos_exploded.cache()
+        
+        total_productos_vendidos = df_productos_exploded.count()
+        logger.info(f"    -> Total productos vendidos globalmente: {total_productos_vendidos:,}")
+        
+        # Top 30 productos más vendidos
+        top_productos = df_productos_exploded.groupBy("product_id") \
+            .count() \
+            .withColumnRenamed("count", "frecuencia") \
+            .orderBy(desc("frecuencia")) \
+            .limit(30) \
+            .collect()
+        
+        productos_data = []
+        for row in top_productos:
+            producto_id = row["product_id"]
+            frecuencia = row["frecuencia"]
+            porcentaje = round((frecuencia / total_productos_vendidos) * 100, 2) if total_productos_vendidos > 0 else 0
+            productos_data.append({
+                "product_id": producto_id,
+                "frecuencia_absoluta": frecuencia,
+                "frecuencia_relativa_pct": porcentaje
+            })
+        
+        estadisticas_categoricas["top_30_productos_mas_vendidos"] = {
+            "total_productos_vendidos": total_productos_vendidos,
+            "productos_unicos": df_productos_exploded.select("product_id").distinct().count(),
+            "top_30": productos_data
+        }
+        
+        # DISTRIBUCIÓN TEMPORAL - Por mes
+        df = df.withColumn("year", year(col("date")))
+        df = df.withColumn("month", month(col("date")))
+        df = df.withColumn("dia_semana", dayofweek(col("date")))
+        
+        dist_mensual = df.groupBy("year", "month") \
+            .agg(count("*").alias("num_transacciones")) \
+            .orderBy("year", "month") \
+            .collect()
+        
+        mensual_data = []
+        for row in dist_mensual:
+            num_trans = row["num_transacciones"]
+            porcentaje = round((num_trans / total_transacciones) * 100, 2) if total_transacciones > 0 else 0
+            mensual_data.append({
+                "year": row["year"],
+                "month": row["month"],
+                "num_transacciones": num_trans,
+                "porcentaje": porcentaje
+            })
+        
+        estadisticas_categoricas["distribucion_temporal_mensual"] = mensual_data
+        
+        # DISTRIBUCIÓN POR DÍA DE LA SEMANA
+        dist_semanal = df.groupBy("dia_semana") \
+            .agg(count("*").alias("num_transacciones")) \
+            .orderBy("dia_semana") \
+            .collect()
+        
+        dias_semana = {1: "Domingo", 2: "Lunes", 3: "Martes", 4: "Miércoles", 
+                      5: "Jueves", 6: "Viernes", 7: "Sábado"}
+        
+        semanal_data = []
+        for row in dist_semanal:
+            num_trans = row["num_transacciones"]
+            porcentaje = round((num_trans / total_transacciones) * 100, 2) if total_transacciones > 0 else 0
+            semanal_data.append({
+                "dia_semana": dias_semana.get(row["dia_semana"], "Desconocido"),
+                "num_transacciones": num_trans,
+                "porcentaje": porcentaje
+            })
+        
+        estadisticas_categoricas["distribucion_dia_semana"] = semanal_data
+        
+        # DISTRIBUCIÓN POR TIENDA
+        dist_tiendas = df.groupBy("store_id") \
+            .agg(count("*").alias("num_transacciones")) \
+            .orderBy(desc("num_transacciones")) \
+            .collect()
+        
+        tiendas_data = []
+        for row in dist_tiendas:
+            num_trans = row["num_transacciones"]
+            porcentaje = round((num_trans / total_transacciones) * 100, 2) if total_transacciones > 0 else 0
+            tiendas_data.append({
+                "store_id": row["store_id"],
+                "num_transacciones": num_trans,
+                "porcentaje": porcentaje
+            })
+        
+        estadisticas_categoricas["distribucion_por_tienda"] = tiendas_data
+        
+        # FRECUENCIA DE COMPRA POR CLIENTE
+        compras_por_cliente = df.groupBy("customer_id") \
+            .agg(count("*").alias("num_compras")) \
+            .select("num_compras")
+        
+        freq_compras = compras_por_cliente.groupBy("num_compras") \
+            .agg(count("*").alias("num_clientes")) \
+            .orderBy(desc("num_clientes")) \
+            .limit(20) \
+            .collect()
+        
+        freq_data = []
+        for row in freq_compras:
+            num_compras = row["num_compras"]
+            num_clientes = row["num_clientes"]
+            porcentaje = round((num_clientes / clientes_unicos) * 100, 2) if clientes_unicos > 0 else 0
+            freq_data.append({
+                "num_compras": num_compras,
+                "num_clientes": num_clientes,
+                "porcentaje_clientes": porcentaje
+            })
+        
+        estadisticas_categoricas["frecuencia_compra_clientes"] = {
+            "top_20_frecuencias": freq_data,
+            "descripcion": "Número de clientes según cuántas veces compraron"
+        }
+        
+        # ==================== GUARDAR RESULTADOS GLOBALES ====================
+        estadisticas["global"] = {
+            "archivos_procesados": trans_files,
+            "num_archivos": len(trans_files),
+            "total_transacciones": total_transacciones,
+            "estadisticas_numericas": estadisticas_numericas,
+            "estadisticas_categoricas": estadisticas_categoricas
+        }
+        
+        logger.info(f"  -> Clientes únicos (global): {clientes_unicos}")
+        logger.info(f"  -> Productos únicos vendidos (global): {estadisticas_categoricas['top_30_productos_mas_vendidos']['productos_unicos']}")
+        
+        # Liberar memoria
+        df.unpersist()
+        df_productos_exploded.unpersist()
+        logger.info("  >>> Completado análisis GLOBAL de transacciones <<<")
         
         # Guardar resultados
         os.makedirs(REPORTS_PATH, exist_ok=True)
@@ -460,57 +495,82 @@ def generar_reporte_consolidado_transacciones(ti):
             logger.warning("No se encontraron datos de tareas anteriores")
             return
         
+        # Obtener datos globales
+        rev_global = revision.get("global", {})
+        est_global = estadisticas.get("global", {})
+        
+        if not rev_global or not est_global:
+            logger.warning("No se encontraron datos globales")
+            return
+        
         # ==================== HOJA 1: RESUMEN GENERAL ====================
-        resumen_data = []
-        for store_id, info in revision.items():
-            est = estadisticas.get(store_id, {})
-            resumen_data.append({
-                "Tienda_ID": store_id,
-                "Archivo": info["archivo"],
-                "Total_Transacciones": info["estructura"]["num_transacciones"],
-                "Clientes_Unicos": est.get("estadisticas_numericas", {}).get("customer_id", {}).get("clientes_unicos", 0),
-                "Fecha_Inicio": info["rango_temporal"]["fecha_inicio"],
-                "Fecha_Fin": info["rango_temporal"]["fecha_fin"],
-                "Productos_Promedio_Transaccion": info["analisis_productos"]["productos_por_transaccion"]["promedio"],
-                "Duplicados": info["calidad_datos"]["duplicados_exactos"],
-                "Nulos": info["calidad_datos"]["total_nulos"]
-            })
+        resumen_data = [{
+            "Alcance": "Global",
+            "Archivos_Procesados": ", ".join(rev_global.get("archivos_procesados", [])),
+            "Num_Archivos": rev_global.get("num_archivos", 0),
+            "Tiendas_Unicas": rev_global.get("tiendas_unicas", 0),
+            "Total_Transacciones": rev_global.get("estructura", {}).get("num_transacciones", 0),
+            "Clientes_Unicos": est_global.get("estadisticas_categoricas", {}).get("customer_id", {}).get("clientes_unicos", 0),
+            "Fecha_Inicio": rev_global.get("rango_temporal", {}).get("fecha_inicio", ""),
+            "Fecha_Fin": rev_global.get("rango_temporal", {}).get("fecha_fin", ""),
+            "Productos_Promedio_Transaccion": rev_global.get("analisis_productos", {}).get("productos_por_transaccion", {}).get("promedio", 0),
+            "Duplicados": rev_global.get("calidad_datos", {}).get("duplicados_exactos", 0),
+            "Nulos": rev_global.get("calidad_datos", {}).get("total_nulos", 0),
+            "Productos_Unicos": est_global.get("estadisticas_categoricas", {}).get("top_30_productos_mas_vendidos", {}).get("productos_unicos", 0)
+        }]
         
         df_resumen = pd.DataFrame(resumen_data)
         
         # Crear Excel con múltiples hojas
-        excel_path = os.path.join(REPORTS_PATH, "Transacciones_Reporte_Completo.xlsx")
+        excel_path = os.path.join(REPORTS_PATH, "Transacciones_Reporte_Completo_Global.xlsx")
         
         with pd.ExcelWriter(excel_path, engine="openpyxl") as writer:
             df_resumen.to_excel(writer, sheet_name="Resumen General", index=False)
             
-            # Por cada tienda, crear hojas adicionales
-            for store_id, est in estadisticas.items():
-                # Top productos
-                if "estadisticas_categoricas" in est and "top_30_productos_mas_vendidos" in est["estadisticas_categoricas"]:
-                    df_productos = pd.DataFrame(
-                        est["estadisticas_categoricas"]["top_30_productos_mas_vendidos"]["top_30"]
-                    )
-                    sheet_name = f"Top_Productos_{store_id}"[:31]  # Límite de 31 caracteres
-                    df_productos.to_excel(writer, sheet_name=sheet_name, index=False)
-                
-                # Distribución mensual
-                if "estadisticas_categoricas" in est and "distribucion_temporal_mensual" in est["estadisticas_categoricas"]:
-                    df_mensual = pd.DataFrame(
-                        est["estadisticas_categoricas"]["distribucion_temporal_mensual"]
-                    )
-                    sheet_name = f"Dist_Mensual_{store_id}"[:31]
-                    df_mensual.to_excel(writer, sheet_name=sheet_name, index=False)
+            # Top productos globales
+            if "estadisticas_categoricas" in est_global and "top_30_productos_mas_vendidos" in est_global["estadisticas_categoricas"]:
+                df_productos = pd.DataFrame(
+                    est_global["estadisticas_categoricas"]["top_30_productos_mas_vendidos"]["top_30"]
+                )
+                df_productos.to_excel(writer, sheet_name="Top_30_Productos", index=False)
+            
+            # Distribución mensual global
+            if "estadisticas_categoricas" in est_global and "distribucion_temporal_mensual" in est_global["estadisticas_categoricas"]:
+                df_mensual = pd.DataFrame(
+                    est_global["estadisticas_categoricas"]["distribucion_temporal_mensual"]
+                )
+                df_mensual.to_excel(writer, sheet_name="Distribucion_Mensual", index=False)
+            
+            # Distribución por día de la semana
+            if "estadisticas_categoricas" in est_global and "distribucion_dia_semana" in est_global["estadisticas_categoricas"]:
+                df_semanal = pd.DataFrame(
+                    est_global["estadisticas_categoricas"]["distribucion_dia_semana"]
+                )
+                df_semanal.to_excel(writer, sheet_name="Distribucion_Semanal", index=False)
+            
+            # Distribución por tienda
+            if "estadisticas_categoricas" in est_global and "distribucion_por_tienda" in est_global["estadisticas_categoricas"]:
+                df_tiendas = pd.DataFrame(
+                    est_global["estadisticas_categoricas"]["distribucion_por_tienda"]
+                )
+                df_tiendas.to_excel(writer, sheet_name="Distribucion_Tiendas", index=False)
+            
+            # Frecuencia de compra por cliente
+            if "estadisticas_categoricas" in est_global and "frecuencia_compra_clientes" in est_global["estadisticas_categoricas"]:
+                df_frecuencia = pd.DataFrame(
+                    est_global["estadisticas_categoricas"]["frecuencia_compra_clientes"]["top_20_frecuencias"]
+                )
+                df_frecuencia.to_excel(writer, sheet_name="Frecuencia_Clientes", index=False)
         
-        logger.info(f"Reporte Excel generado: {excel_path}")
+        logger.info(f"Reporte Excel GLOBAL generado: {excel_path}")
         
         # Guardar CSV del resumen
-        csv_path = os.path.join(REPORTS_PATH, "Transacciones_Resumen.csv")
+        csv_path = os.path.join(REPORTS_PATH, "Transacciones_Resumen_Global.csv")
         df_resumen.to_csv(csv_path, index=False, encoding="utf-8")
-        logger.info(f"Reporte CSV generado: {csv_path}")
+        logger.info(f"Reporte CSV GLOBAL generado: {csv_path}")
         
         logger.info("=" * 80)
-        logger.info("REPORTE CONSOLIDADO COMPLETADO")
+        logger.info("REPORTE CONSOLIDADO GLOBAL COMPLETADO")
         logger.info("=" * 80)
         
     except Exception as e:

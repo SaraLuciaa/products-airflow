@@ -1,0 +1,2 @@
+Alcance,Archivos_Procesados,Num_Archivos,Tiendas_Unicas,Total_Transacciones,Clientes_Unicos,Fecha_Inicio,Fecha_Fin,Productos_Promedio_Transaccion,Duplicados,Nulos,Productos_Unicos
+Global,"102_Tran.csv, 103_Tran.csv, 107_Tran.csv, 110_Tran.csv",4,4,1108987,131186,2013-01-01,2013-06-30,9.55,1,0,449
