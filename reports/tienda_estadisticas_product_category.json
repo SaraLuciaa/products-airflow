@@ -1,0 +1,318 @@
+{
+    "productos": {
+        "total_registros": 112010,
+        "productos_unicos": 69891,
+        "productos_duplicados": 42119
+    },
+    "categorias": {
+        "categorias_unicas": 50,
+        "distribucion_categorias": [
+            {
+                "codigo_categoria": 2,
+                "nombre_categoria": "CONCESIONARIOS",
+                "num_productos": 23258,
+                "porcentaje": 20.76
+            },
+            {
+                "codigo_categoria": 9,
+                "nombre_categoria": "PASABOCAS",
+                "num_productos": 5279,
+                "porcentaje": 4.71
+            },
+            {
+                "codigo_categoria": 11,
+                "nombre_categoria": "CUIDADO DE LA COCINA",
+                "num_productos": 4869,
+                "porcentaje": 4.35
+            },
+            {
+                "codigo_categoria": 13,
+                "nombre_categoria": "GALLETAS",
+                "num_productos": 4541,
+                "porcentaje": 4.05
+            },
+            {
+                "codigo_categoria": 8,
+                "nombre_categoria": "QUESO",
+                "num_productos": 4260,
+                "porcentaje": 3.8
+            },
+            {
+                "codigo_categoria": 14,
+                "nombre_categoria": "ENLATADOS",
+                "num_productos": 3784,
+                "porcentaje": 3.38
+            },
+            {
+                "codigo_categoria": 40,
+                "nombre_categoria": "MASCOTAS",
+                "num_productos": 3693,
+                "porcentaje": 3.3
+            },
+            {
+                "codigo_categoria": 48,
+                "nombre_categoria": "DESODORANTES",
+                "num_productos": 3434,
+                "porcentaje": 3.07
+            },
+            {
+                "codigo_categoria": 22,
+                "nombre_categoria": "SALSAS",
+                "num_productos": 3422,
+                "porcentaje": 3.06
+            },
+            {
+                "codigo_categoria": 5,
+                "nombre_categoria": "PANES-TOSTADAS",
+                "num_productos": 3322,
+                "porcentaje": 2.97
+            },
+            {
+                "codigo_categoria": 3,
+                "nombre_categoria": "VERDURAS DE FRUTOS",
+                "num_productos": 2925,
+                "porcentaje": 2.61
+            },
+            {
+                "codigo_categoria": 4,
+                "nombre_categoria": "CUIDADO DE LA ROPA",
+                "num_productos": 2925,
+                "porcentaje": 2.61
+            },
+            {
+                "codigo_categoria": 12,
+                "nombre_categoria": "YOGURT",
+                "num_productos": 2877,
+                "porcentaje": 2.57
+            },
+            {
+                "codigo_categoria": 39,
+                "nombre_categoria": "CONFITES",
+                "num_productos": 2769,
+                "porcentaje": 2.47
+            },
+            {
+                "codigo_categoria": 15,
+                "nombre_categoria": "GASEOSAS",
+                "num_productos": 2765,
+                "porcentaje": 2.47
+            },
+            {
+                "codigo_categoria": 30,
+                "nombre_categoria": "CUIDADO DE PISOS",
+                "num_productos": 2762,
+                "porcentaje": 2.47
+            },
+            {
+                "codigo_categoria": 6,
+                "nombre_categoria": "VERDURAS RAIZ,TUBERCULO Y BULBOS",
+                "num_productos": 2743,
+                "porcentaje": 2.45
+            },
+            {
+                "codigo_categoria": 7,
+                "nombre_categoria": "CARNES PROCESADAS AL VACIO",
+                "num_productos": 2743,
+                "porcentaje": 2.45
+            },
+            {
+                "codigo_categoria": 36,
+                "nombre_categoria": "JABONES DE TOCADOR",
+                "num_productos": 2582,
+                "porcentaje": 2.31
+            },
+            {
+                "codigo_categoria": 10,
+                "nombre_categoria": "LECHE LIQUIDA",
+                "num_productos": 2390,
+                "porcentaje": 2.13
+            },
+            {
+                "codigo_categoria": 24,
+                "nombre_categoria": "VERDURAS RAIZ,TUBE,ETC, PESO FIJO",
+                "num_productos": 2292,
+                "porcentaje": 2.05
+            },
+            {
+                "codigo_categoria": 17,
+                "nombre_categoria": "JUGOS",
+                "num_productos": 2265,
+                "porcentaje": 2.02
+            },
+            {
+                "codigo_categoria": 25,
+                "nombre_categoria": "PASTAS COMESTIBLES",
+                "num_productos": 1587,
+                "porcentaje": 1.42
+            },
+            {
+                "codigo_categoria": 33,
+                "nombre_categoria": "CONDIMENTOS",
+                "num_productos": 1555,
+                "porcentaje": 1.39
+            },
+            {
+                "codigo_categoria": 23,
+                "nombre_categoria": "AZUCAR",
+                "num_productos": 1266,
+                "porcentaje": 1.13
+            },
+            {
+                "codigo_categoria": 47,
+                "nombre_categoria": "AVES",
+                "num_productos": 1199,
+                "porcentaje": 1.07
+            },
+            {
+                "codigo_categoria": 21,
+                "nombre_categoria": "HUEVOS",
+                "num_productos": 1085,
+                "porcentaje": 0.97
+            },
+            {
+                "codigo_categoria": 16,
+                "nombre_categoria": "AREPAS",
+                "num_productos": 1078,
+                "porcentaje": 0.96
+            },
+            {
+                "codigo_categoria": 19,
+                "nombre_categoria": "CEREALES",
+                "num_productos": 1078,
+                "porcentaje": 0.96
+            },
+            {
+                "codigo_categoria": 34,
+                "nombre_categoria": "BEBIDAS INSTANTANEAS",
+                "num_productos": 1062,
+                "porcentaje": 0.95
+            },
+            {
+                "codigo_categoria": 35,
+                "nombre_categoria": "CEREALES PARA EL DESAYUNO",
+                "num_productos": 980,
+                "porcentaje": 0.87
+            },
+            {
+                "codigo_categoria": 38,
+                "nombre_categoria": "VARIOS USOS ASEO HOGAR",
+                "num_productos": 973,
+                "porcentaje": 0.87
+            },
+            {
+                "codigo_categoria": 18,
+                "nombre_categoria": "VERDURAS DE HOJAS",
+                "num_productos": 942,
+                "porcentaje": 0.84
+            },
+            {
+                "codigo_categoria": 29,
+                "nombre_categoria": "ACEITE DE COCINA",
+                "num_productos": 936,
+                "porcentaje": 0.84
+            },
+            {
+                "codigo_categoria": 37,
+                "nombre_categoria": "TORTAS Y PORQUES",
+                "num_productos": 906,
+                "porcentaje": 0.81
+            },
+            {
+                "codigo_categoria": 27,
+                "nombre_categoria": "SOPAS-CREMAS-CALDOS",
+                "num_productos": 774,
+                "porcentaje": 0.69
+            },
+            {
+                "codigo_categoria": 1,
+                "nombre_categoria": "GRUPO FRUVER-EXCEPCIONES",
+                "num_productos": 770,
+                "porcentaje": 0.69
+            },
+            {
+                "codigo_categoria": 28,
+                "nombre_categoria": "AROMATICAS MEDICINALES",
+                "num_productos": 704,
+                "porcentaje": 0.63
+            },
+            {
+                "codigo_categoria": 32,
+                "nombre_categoria": "PAPEL HIGIENICO",
+                "num_productos": 589,
+                "porcentaje": 0.53
+            },
+            {
+                "codigo_categoria": 43,
+                "nombre_categoria": "CREMAS DENTALES",
+                "num_productos": 577,
+                "porcentaje": 0.52
+            },
+            {
+                "codigo_categoria": 49,
+                "nombre_categoria": "GOMAS DE MASCAR",
+                "num_productos": 547,
+                "porcentaje": 0.49
+            },
+            {
+                "codigo_categoria": 20,
+                "nombre_categoria": "AROMATICAS CONDIMENTOS",
+                "num_productos": 469,
+                "porcentaje": 0.42
+            },
+            {
+                "codigo_categoria": 42,
+                "nombre_categoria": "CAFE NO SOLUBLES",
+                "num_productos": 362,
+                "porcentaje": 0.32
+            },
+            {
+                "codigo_categoria": 44,
+                "nombre_categoria": "MARGARINAS",
+                "num_productos": 361,
+                "porcentaje": 0.32
+            },
+            {
+                "codigo_categoria": 26,
+                "nombre_categoria": "GRANOS",
+                "num_productos": 148,
+                "porcentaje": 0.13
+            },
+            {
+                "codigo_categoria": 31,
+                "nombre_categoria": "LEGUMBRES VERDES",
+                "num_productos": 97,
+                "porcentaje": 0.09
+            },
+            {
+                "codigo_categoria": 41,
+                "nombre_categoria": "LULO NACIONAL",
+                "num_productos": 29,
+                "porcentaje": 0.03
+            },
+            {
+                "codigo_categoria": 45,
+                "nombre_categoria": "PAPAYA COMUN",
+                "num_productos": 21,
+                "porcentaje": 0.02
+            },
+            {
+                "codigo_categoria": 50,
+                "nombre_categoria": "MANGO TOMY",
+                "num_productos": 12,
+                "porcentaje": 0.01
+            },
+            {
+                "codigo_categoria": 46,
+                "nombre_categoria": "BANANO EXPORTACION",
+                "num_productos": 3,
+                "porcentaje": 0.0
+            }
+        ]
+    },
+    "relaciones": {
+        "productos_en_multiples_categorias": 23646,
+        "porcentaje_productos_multi_categoria": 33.83,
+        "promedio_categorias_por_producto": 1.34,
+        "promedio_productos_por_categoria": 1870.74
+    }
+}

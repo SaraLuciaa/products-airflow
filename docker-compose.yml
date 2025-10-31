@@ -1,0 +1,87 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  airflow-init:
+    image: airflow-pyspark:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        AIRFLOW_IMAGE: ${AIRFLOW_IMAGE}
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      _AIRFLOW_DB_UPGRADE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "true"
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+    user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dataset:/opt/airflow/dataset
+      - ./reports:/opt/airflow/reports
+      - ./logs:/opt/airflow/logs
+    command: bash -c "airflow db upgrade && airflow users create -u admin -p admin -f Admin -l User -r Admin -e admin@example.com"
+
+  webserver:
+    image: airflow-pyspark:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        AIRFLOW_IMAGE: ${AIRFLOW_IMAGE}
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dataset:/opt/airflow/dataset
+      - ./reports:/opt/airflow/reports
+      - airflow-logs:/opt/airflow/logs
+      - airflow-config:/opt/airflow/config
+    ports:
+      - "8082:8080"
+    command: webserver
+
+  scheduler:
+    image: airflow-pyspark:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        AIRFLOW_IMAGE: ${AIRFLOW_IMAGE}
+    depends_on:
+      - webserver
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dataset:/opt/airflow/dataset
+      - ./reports:/opt/airflow/reports
+      - airflow-logs:/opt/airflow/logs
+      - airflow-config:/opt/airflow/config
+    command: scheduler
+
+volumes:
+  postgres-db-volume:
+  airflow-logs:
+  airflow-config:
