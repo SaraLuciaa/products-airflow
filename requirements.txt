@@ -1,5 +1,5 @@
-## Python requirements for custom Airflow image
-# Pin pyspark to a recent stable release compatible with Python 3.11
-pyspark==3.4.1
-# For Excel export functionality
+pyspark==3.5.1
+statsmodels==0.14.2
 openpyxl==3.1.2
+pandas>=2.0
+numpy>=1.26

@@ -13,37 +13,13 @@ services:
       timeout: 5s
       retries: 5
 
-  airflow-init:
-    image: airflow-pyspark:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        AIRFLOW_IMAGE: ${AIRFLOW_IMAGE}
-    depends_on:
-      - postgres
-    environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-      _AIRFLOW_DB_UPGRADE: "true"
-      _AIRFLOW_WWW_USER_CREATE: "true"
-      _AIRFLOW_WWW_USER_USERNAME: admin
-      _AIRFLOW_WWW_USER_PASSWORD: admin
-    user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
-    volumes:
-      - ./dags:/opt/airflow/dags
-      - ./dataset:/opt/airflow/dataset
-      - ./reports:/opt/airflow/reports
-      - ./logs:/opt/airflow/logs
-    command: bash -c "airflow db upgrade && airflow users create -u admin -p admin -f Admin -l User -r Admin -e admin@example.com"
-
+  # Construye SOLO aquí
   webserver:
     image: airflow-pyspark:latest
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        AIRFLOW_IMAGE: ${AIRFLOW_IMAGE}
+      
     depends_on:
       - postgres
     environment:
@@ -60,13 +36,31 @@ services:
       - "8082:8080"
     command: webserver
 
+  # Reutiliza la imagen (sin build)
+  airflow-init:
+    image: airflow-pyspark:latest
+    depends_on:
+      - webserver
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      _AIRFLOW_DB_UPGRADE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "true"
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+    user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./dataset:/opt/airflow/dataset
+      - ./reports:/opt/airflow/reports
+      - ./logs:/opt/airflow/logs
+    command: >
+      bash -c "airflow db upgrade &&
+               airflow users create -u admin -p admin -f Admin -l User -r Admin -e admin@example.com"
+
+  # Reutiliza la imagen (sin build)
   scheduler:
     image: airflow-pyspark:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        AIRFLOW_IMAGE: ${AIRFLOW_IMAGE}
     depends_on:
       - webserver
     environment:
