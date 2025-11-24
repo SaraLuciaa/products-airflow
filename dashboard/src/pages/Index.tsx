@@ -45,12 +45,6 @@ const Index = () => {
   const segmentation = modelosAvanzadosData?.segmentacion_clientes;
   const cohortesRetention = modelosAvanzadosData?.cohortes_retencion?.retention || [];
   const forecastMensual = modelosAvanzadosData?.forecast_mensual;
-  
-  // Verificar datos de segmentación para heatmap
-  const hasSegmentationData = segmentation?.clusters_resumen && 
-                              Array.isArray(segmentation.clusters_resumen) && 
-                              segmentation.clusters_resumen.length > 0 &&
-                              segmentation.clusters_resumen[0]?.promedios;
 
   return (
     <div className="min-h-screen bg-background">
@@ -194,7 +188,7 @@ const Index = () => {
         )}
 
         {/* Correlation Heatmap */}
-        {segmentation && segmentation.clusters_resumen && segmentation.clusters_resumen.length > 0 && (
+        {segmentation?.clusters_resumen && segmentation.clusters_resumen.length > 0 && (
           <CorrelationHeatmap 
             clusters={segmentation.clusters_resumen}
             featureNames={segmentation.feature_names?.map((name: string) => {
@@ -210,7 +204,7 @@ const Index = () => {
         )}
 
         {/* Business Recommendations */}
-        {hasSegmentationData && (
+        {segmentation?.clusters_resumen && segmentation.clusters_resumen.length > 0 && (
           <BusinessRecommendations clusters={segmentation.clusters_resumen} />
         )}
 
