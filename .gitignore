@@ -1,3 +1,5 @@
 env.compose
 logs/
 __pycache__/
+
+env/

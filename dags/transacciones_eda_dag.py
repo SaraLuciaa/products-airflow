@@ -130,6 +130,100 @@ def revision_inicial_transacciones(ti):
     finally:
         spark.stop()
 
+
+# ================================================================================
+# TAREA (NUEVA): Top 10 categorías por unidades vendidas
+# ================================================================================
+def top_categorias_por_ventas(ti, top_n=10):
+    """
+    Calcula el top N de categorías por unidades vendidas (apariciones de product_id
+    en los archivos de transacciones). Guarda JSON y XCom.
+    """
+    from pyspark.sql import SparkSession
+    from pyspark.sql.functions import col, split, explode
+    from pyspark.sql.types import IntegerType
+
+    logger.info("=" * 80)
+    logger.info("TOP CATEGORÍAS POR VENTAS - TRANSACCIONES")
+    logger.info("=" * 80)
+
+    spark = SparkSession.builder \
+        .appName("Top_Categorias_Ventas") \
+        .master("local[*]") \
+        .config("spark.driver.memory", "3g") \
+        .getOrCreate()
+
+    try:
+        trans_path = os.path.join(DATASET_PATH, "Transactions")
+        prod_cat_path = os.path.join(DATASET_PATH, "Products", "ProductCategory.csv")
+        categories_path = os.path.join(DATASET_PATH, "Products", "Categories.csv")
+
+        trans_files = [f for f in os.listdir(trans_path) if f.endswith("_Tran.csv")]
+        if not trans_files:
+            logger.warning("No se encontraron archivos de transacciones para top categorías")
+            ti.xcom_push(key="top_categorias", value={})
+            return
+
+        # Leer mapping product -> categoria
+        df_prod_cat = spark.read.csv(prod_cat_path, header=True, sep="|").toDF("product_id_raw", "category_id")
+        df_prod_cat = df_prod_cat.withColumn("product_id", col("product_id_raw").cast(IntegerType())).select("product_id", col("category_id").cast(IntegerType()))
+
+        # Leer categorias para nombres
+        df_cats = spark.read.csv(categories_path, header=True, sep="|").toDF("category_id", "category_name")
+        df_cats = df_cats.withColumn("category_id", col("category_id").cast(IntegerType()))
+
+        file_paths = [os.path.join(trans_path, f) for f in trans_files]
+        df = spark.read.csv(file_paths, header=False, inferSchema=False, sep="|").toDF("date", "store_id", "customer_id", "products")
+
+        # Explode products
+        df_products = df.select(explode(split(col("products"), " ")).alias("product_id"))
+        df_products = df_products.withColumn("product_id", col("product_id").cast(IntegerType())).filter(col("product_id").isNotNull())
+
+        # Contar por producto
+        prod_counts = df_products.groupBy("product_id").count().withColumnRenamed("count", "units_sold")
+
+        # Unir con categoria
+        prod_cat_join = prod_counts.join(df_prod_cat, on="product_id", how="left")
+
+        # Agregar por categoria (sumar unidades por producto)
+        from pyspark.sql.functions import sum as ssum
+        cat_counts = prod_cat_join.groupBy("category_id").agg(ssum("units_sold").alias("units_sold"))
+
+        # Añadir nombres
+        cat_with_names = cat_counts.join(df_cats, on="category_id", how="left")
+        cat_with_names = cat_with_names.orderBy(col("units_sold").desc())
+
+        top = cat_with_names.limit(top_n).collect()
+
+        # Formatear resultado
+        total_units = cat_with_names.select(ssum("units_sold").alias("total")).collect()[0]["total"] if cat_with_names.count() > 0 else 0
+        result_list = []
+        for r in top:
+            units = int(r["units_sold"]) if r["units_sold"] is not None else 0
+            cat_id = int(r["category_id"]) if r["category_id"] is not None else None
+            name = r["category_name"] if r["category_name"] is not None else None
+            pct = round((units / total_units) * 100, 2) if total_units and units else 0.0
+            result_list.append({
+                "category_id": cat_id,
+                "category_name": name,
+                "unidades_vendidas": units,
+                "porcentaje": pct
+            })
+
+        output = {"top_n": top_n, "total_unidades": int(total_units) if total_units is not None else 0, "top": result_list}
+
+        os.makedirs(REPORTS_PATH, exist_ok=True)
+        output_path = os.path.join(REPORTS_PATH, "top_categorias_por_ventas.json")
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(output, f, indent=4, ensure_ascii=False)
+
+        ti.xcom_push(key="top_categorias", value=output)
+    except Exception as e:
+        logger.error(f"Error en top_categorias_por_ventas: {e}")
+        raise
+    finally:
+        spark.stop()
+
 # ================================================================================
 # TAREA 2: Estadísticas descriptivas (tu versión extendida previa)
 # ================================================================================
@@ -211,11 +305,26 @@ def estadisticas_descriptivas_transacciones(ti):
         moda_customer = df.groupBy("customer_id").count().orderBy(desc("count")).first()
         estadisticas_categoricas = {"customer_id": {"clientes_unicos": clientes_unicos, "moda": moda_customer["customer_id"] if moda_customer else None}}
 
+        # Top 10 clientes por número de compras
+        top_clientes = df.groupBy("customer_id").count().withColumnRenamed("count", "frecuencia").orderBy(desc("frecuencia")).limit(10).collect()
+        clientes_data = []
+        for row in top_clientes:
+            freq = row["frecuencia"]
+            clientes_data.append({
+                "customer_id": int(row["customer_id"]),
+                "frecuencia_absoluta": int(freq),
+                "frecuencia_relativa_pct": round((freq / total_transacciones) * 100, 2) if total_transacciones > 0 else 0
+            })
+        estadisticas_categoricas["top_10_clientes_mas_compras"] = {
+            "total_clientes_unicos": clientes_unicos,
+            "top_10": clientes_data
+        }
+
         df_productos_exploded = df.select(explode(split(col("products"), " ")).alias("product_id"))
         df_productos_exploded = df_productos_exploded.withColumn("product_id", col("product_id").cast(IntegerType())).filter(col("product_id").isNotNull())
         df_productos_exploded.cache()
         total_productos_vendidos = df_productos_exploded.count()
-        top_productos = df_productos_exploded.groupBy("product_id").count().withColumnRenamed("count", "frecuencia").orderBy(desc("frecuencia")).limit(30).collect()
+        top_productos = df_productos_exploded.groupBy("product_id").count().withColumnRenamed("count", "frecuencia").orderBy(desc("frecuencia")).limit(10).collect()
         productos_data = []
         for row in top_productos:
             frecuencia = row["frecuencia"]
@@ -224,10 +333,10 @@ def estadisticas_descriptivas_transacciones(ti):
                 "frecuencia_absoluta": frecuencia,
                 "frecuencia_relativa_pct": round((frecuencia / total_productos_vendidos) * 100, 2) if total_productos_vendidos > 0 else 0
             })
-        estadisticas_categoricas["top_30_productos_mas_vendidos"] = {
+        estadisticas_categoricas["top_10_productos_mas_vendidos"] = {
             "total_productos_vendidos": total_productos_vendidos,
             "productos_unicos": df_productos_exploded.select("product_id").distinct().count(),
-            "top_30": productos_data
+            "top_10": productos_data
         }
 
         from pyspark.sql.functions import dayofweek
@@ -522,6 +631,7 @@ def generar_reporte_consolidado_transacciones(ti):
         estadisticas = ti.xcom_pull(key="estadisticas", task_ids="estadisticas_descriptivas_transacciones")
         cohortes = ti.xcom_pull(key="cohortes", task_ids="cohortes_retencion")
         forecast = ti.xcom_pull(key="forecast", task_ids="forecasting_transacciones")
+        top_cats = ti.xcom_pull(key="top_categorias", task_ids="top_categorias_por_ventas")
 
         if not revision or not estadisticas:
             logger.warning("No se encontraron datos base de tareas anteriores")
@@ -542,7 +652,7 @@ def generar_reporte_consolidado_transacciones(ti):
             "Productos_Promedio_Transaccion": rev_global.get("analisis_productos", {}).get("productos_por_transaccion", {}).get("promedio", 0),
             "Duplicados": rev_global.get("calidad_datos", {}).get("duplicados_exactos", 0),
             "Nulos": rev_global.get("calidad_datos", {}).get("total_nulos", 0),
-            "Productos_Unicos": est_global.get("estadisticas_categoricas", {}).get("top_30_productos_mas_vendidos", {}).get("productos_unicos", 0)
+            "Productos_Unicos": est_global.get("estadisticas_categoricas", {}).get("top_10_productos_mas_vendidos", {}).get("productos_unicos", 0)
         }]
 
         os.makedirs(REPORTS_PATH, exist_ok=True)
@@ -552,10 +662,24 @@ def generar_reporte_consolidado_transacciones(ti):
             # Resumen
             pd.DataFrame(resumen_data).to_excel(writer, sheet_name="Resumen General", index=False)
 
-            # Top productos
-            if "estadisticas_categoricas" in est_global and "top_30_productos_mas_vendidos" in est_global["estadisticas_categoricas"]:
-                df_productos = pd.DataFrame(est_global["estadisticas_categoricas"]["top_30_productos_mas_vendidos"]["top_30"])
-                df_productos.to_excel(writer, sheet_name="Top_30_Productos", index=False)
+            # Top productos (Top 10)
+            if "estadisticas_categoricas" in est_global and "top_10_productos_mas_vendidos" in est_global["estadisticas_categoricas"]:
+                df_productos = pd.DataFrame(est_global["estadisticas_categoricas"]["top_10_productos_mas_vendidos"]["top_10"])
+                df_productos.to_excel(writer, sheet_name="Top_10_Productos", index=False)
+
+            # Top clientes (Top 10)
+            if "estadisticas_categoricas" in est_global and "top_10_clientes_mas_compras" in est_global["estadisticas_categoricas"]:
+                df_clientes = pd.DataFrame(est_global["estadisticas_categoricas"]["top_10_clientes_mas_compras"]["top_10"])
+                df_clientes.to_excel(writer, sheet_name="Top_10_Clientes", index=False)
+
+            # Top categorias por ventas (generado por tarea nueva)
+            if top_cats and "top" in top_cats:
+                try:
+                    df_top_cats = pd.DataFrame(top_cats["top"])
+                    df_top_cats.to_excel(writer, sheet_name="Top_10_Categorias", index=False)
+                except Exception:
+                    # si falla, seguimos sin detener el reporte
+                    logger.warning("No se pudo escribir Top_10_Categorias en el excel")
 
             # Mensual
             if "estadisticas_categoricas" in est_global and "distribucion_temporal_mensual" in est_global["estadisticas_categoricas"]:
@@ -644,12 +768,17 @@ with DAG(
         python_callable=forecasting_transacciones
     )
 
+    tarea_top = PythonOperator(
+        task_id='top_categorias_por_ventas',
+        python_callable=top_categorias_por_ventas
+    )
+
     tarea_3 = PythonOperator(
         task_id='generar_reporte_consolidado_transacciones',
         python_callable=generar_reporte_consolidado_transacciones
     )
 
-    # Dependencias: primero EDA, luego cohortes + forecast, y al final el consolidado
+    # Dependencias: primero EDA, luego cohortes + forecast + top categorías, y al final el consolidado
     tarea_1 >> tarea_2
-    tarea_2 >> [tarea_4, tarea_5]
-    [tarea_4, tarea_5] >> tarea_3
+    tarea_2 >> [tarea_4, tarea_5, tarea_top]
+    [tarea_4, tarea_5, tarea_top] >> tarea_3
