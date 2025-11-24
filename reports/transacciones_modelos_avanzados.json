@@ -1,0 +1,619 @@
+{
+    "segmentacion_clientes": {
+        "k": 4,
+        "num_clientes": 131186,
+        "feature_names": [
+            "frecuencia",
+            "volumen_total",
+            "diversidad_productos",
+            "diversidad_categorias"
+        ],
+        "clusters_resumen": [
+            {
+                "cluster": 0,
+                "num_clientes": 54633,
+                "porcentaje_clientes": 41.65,
+                "promedios": {
+                    "frecuencia": 1.9,
+                    "volumen_total": 7.0,
+                    "diversidad_productos": 6.17,
+                    "diversidad_categorias": 3.7
+                }
+            },
+            {
+                "cluster": 1,
+                "num_clientes": 6171,
+                "porcentaje_clientes": 4.7,
+                "promedios": {
+                    "frecuencia": 41.92,
+                    "volumen_total": 520.57,
+                    "diversidad_productos": 114.71,
+                    "diversidad_categorias": 16.88
+                }
+            },
+            {
+                "cluster": 2,
+                "num_clientes": 48115,
+                "porcentaje_clientes": 36.68,
+                "promedios": {
+                    "frecuencia": 6.73,
+                    "volumen_total": 51.86,
+                    "diversidad_productos": 30.97,
+                    "diversidad_categorias": 10.23
+                }
+            },
+            {
+                "cluster": 3,
+                "num_clientes": 22267,
+                "porcentaje_clientes": 16.97,
+                "promedios": {
+                    "frecuencia": 19.0,
+                    "volumen_total": 202.16,
+                    "diversidad_productos": 72.72,
+                    "diversidad_categorias": 14.14
+                }
+            }
+        ],
+        "clientes_ejemplo": [
+            {
+                "customer_id": 5,
+                "cluster": 0
+            },
+            {
+                "customer_id": 6,
+                "cluster": 3
+            },
+            {
+                "customer_id": 13,
+                "cluster": 1
+            },
+            {
+                "customer_id": 17,
+                "cluster": 0
+            },
+            {
+                "customer_id": 19,
+                "cluster": 3
+            },
+            {
+                "customer_id": 34,
+                "cluster": 2
+            },
+            {
+                "customer_id": 60,
+                "cluster": 0
+            },
+            {
+                "customer_id": 86,
+                "cluster": 2
+            },
+            {
+                "customer_id": 97,
+                "cluster": 2
+            },
+            {
+                "customer_id": 99,
+                "cluster": 3
+            },
+            {
+                "customer_id": 107,
+                "cluster": 2
+            },
+            {
+                "customer_id": 108,
+                "cluster": 2
+            },
+            {
+                "customer_id": 110,
+                "cluster": 0
+            },
+            {
+                "customer_id": 124,
+                "cluster": 2
+            },
+            {
+                "customer_id": 140,
+                "cluster": 2
+            },
+            {
+                "customer_id": 144,
+                "cluster": 3
+            },
+            {
+                "customer_id": 168,
+                "cluster": 3
+            },
+            {
+                "customer_id": 172,
+                "cluster": 3
+            },
+            {
+                "customer_id": 173,
+                "cluster": 2
+            },
+            {
+                "customer_id": 180,
+                "cluster": 1
+            },
+            {
+                "customer_id": 182,
+                "cluster": 2
+            },
+            {
+                "customer_id": 192,
+                "cluster": 0
+            },
+            {
+                "customer_id": 196,
+                "cluster": 3
+            },
+            {
+                "customer_id": 198,
+                "cluster": 3
+            },
+            {
+                "customer_id": 201,
+                "cluster": 0
+            },
+            {
+                "customer_id": 207,
+                "cluster": 2
+            },
+            {
+                "customer_id": 219,
+                "cluster": 3
+            },
+            {
+                "customer_id": 229,
+                "cluster": 0
+            },
+            {
+                "customer_id": 230,
+                "cluster": 3
+            },
+            {
+                "customer_id": 238,
+                "cluster": 2
+            },
+            {
+                "customer_id": 242,
+                "cluster": 2
+            },
+            {
+                "customer_id": 251,
+                "cluster": 0
+            },
+            {
+                "customer_id": 269,
+                "cluster": 2
+            },
+            {
+                "customer_id": 275,
+                "cluster": 1
+            },
+            {
+                "customer_id": 298,
+                "cluster": 0
+            },
+            {
+                "customer_id": 304,
+                "cluster": 0
+            },
+            {
+                "customer_id": 308,
+                "cluster": 2
+            },
+            {
+                "customer_id": 323,
+                "cluster": 0
+            },
+            {
+                "customer_id": 326,
+                "cluster": 2
+            },
+            {
+                "customer_id": 335,
+                "cluster": 1
+            },
+            {
+                "customer_id": 338,
+                "cluster": 2
+            },
+            {
+                "customer_id": 356,
+                "cluster": 0
+            },
+            {
+                "customer_id": 362,
+                "cluster": 3
+            },
+            {
+                "customer_id": 367,
+                "cluster": 0
+            },
+            {
+                "customer_id": 368,
+                "cluster": 0
+            },
+            {
+                "customer_id": 374,
+                "cluster": 0
+            },
+            {
+                "customer_id": 378,
+                "cluster": 3
+            },
+            {
+                "customer_id": 386,
+                "cluster": 2
+            },
+            {
+                "customer_id": 396,
+                "cluster": 0
+            },
+            {
+                "customer_id": 397,
+                "cluster": 0
+            }
+        ]
+    },
+    "recomendador_productos": {},
+    "cohortes_retencion": {
+        "cohort_sizes": [
+            {
+                "cohort_month": "2013-01-01",
+                "cohort_size": 71549
+            },
+            {
+                "cohort_month": "2013-02-01",
+                "cohort_size": 19680
+            },
+            {
+                "cohort_month": "2013-03-01",
+                "cohort_size": 14069
+            },
+            {
+                "cohort_month": "2013-04-01",
+                "cohort_size": 9443
+            },
+            {
+                "cohort_month": "2013-05-01",
+                "cohort_size": 8293
+            },
+            {
+                "cohort_month": "2013-06-01",
+                "cohort_size": 8152
+            }
+        ],
+        "retention": [
+            {
+                "cohort_month": "2013-01-01",
+                "cohort_index": 0,
+                "active_customers": 71549,
+                "cohort_size": 71549,
+                "retention_rate": 1.0
+            },
+            {
+                "cohort_month": "2013-01-01",
+                "cohort_index": 1,
+                "active_customers": 48877,
+                "cohort_size": 71549,
+                "retention_rate": 0.6831
+            },
+            {
+                "cohort_month": "2013-01-01",
+                "cohort_index": 2,
+                "active_customers": 49616,
+                "cohort_size": 71549,
+                "retention_rate": 0.6935
+            },
+            {
+                "cohort_month": "2013-01-01",
+                "cohort_index": 3,
+                "active_customers": 48121,
+                "cohort_size": 71549,
+                "retention_rate": 0.6726
+            },
+            {
+                "cohort_month": "2013-01-01",
+                "cohort_index": 4,
+                "active_customers": 48082,
+                "cohort_size": 71549,
+                "retention_rate": 0.672
+            },
+            {
+                "cohort_month": "2013-01-01",
+                "cohort_index": 5,
+                "active_customers": 48322,
+                "cohort_size": 71549,
+                "retention_rate": 0.6754
+            },
+            {
+                "cohort_month": "2013-02-01",
+                "cohort_index": 0,
+                "active_customers": 19680,
+                "cohort_size": 19680,
+                "retention_rate": 1.0
+            },
+            {
+                "cohort_month": "2013-02-01",
+                "cohort_index": 1,
+                "active_customers": 8532,
+                "cohort_size": 19680,
+                "retention_rate": 0.4335
+            },
+            {
+                "cohort_month": "2013-02-01",
+                "cohort_index": 2,
+                "active_customers": 8053,
+                "cohort_size": 19680,
+                "retention_rate": 0.4092
+            },
+            {
+                "cohort_month": "2013-02-01",
+                "cohort_index": 3,
+                "active_customers": 8207,
+                "cohort_size": 19680,
+                "retention_rate": 0.417
+            },
+            {
+                "cohort_month": "2013-02-01",
+                "cohort_index": 4,
+                "active_customers": 8331,
+                "cohort_size": 19680,
+                "retention_rate": 0.4233
+            },
+            {
+                "cohort_month": "2013-03-01",
+                "cohort_index": 0,
+                "active_customers": 14069,
+                "cohort_size": 14069,
+                "retention_rate": 1.0
+            },
+            {
+                "cohort_month": "2013-03-01",
+                "cohort_index": 1,
+                "active_customers": 4409,
+                "cohort_size": 14069,
+                "retention_rate": 0.3134
+            },
+            {
+                "cohort_month": "2013-03-01",
+                "cohort_index": 2,
+                "active_customers": 4386,
+                "cohort_size": 14069,
+                "retention_rate": 0.3117
+            },
+            {
+                "cohort_month": "2013-03-01",
+                "cohort_index": 3,
+                "active_customers": 4562,
+                "cohort_size": 14069,
+                "retention_rate": 0.3243
+            },
+            {
+                "cohort_month": "2013-04-01",
+                "cohort_index": 0,
+                "active_customers": 9443,
+                "cohort_size": 9443,
+                "retention_rate": 1.0
+            },
+            {
+                "cohort_month": "2013-04-01",
+                "cohort_index": 1,
+                "active_customers": 2784,
+                "cohort_size": 9443,
+                "retention_rate": 0.2948
+            },
+            {
+                "cohort_month": "2013-04-01",
+                "cohort_index": 2,
+                "active_customers": 2783,
+                "cohort_size": 9443,
+                "retention_rate": 0.2947
+            },
+            {
+                "cohort_month": "2013-05-01",
+                "cohort_index": 0,
+                "active_customers": 8293,
+                "cohort_size": 8293,
+                "retention_rate": 1.0
+            },
+            {
+                "cohort_month": "2013-05-01",
+                "cohort_index": 1,
+                "active_customers": 2282,
+                "cohort_size": 8293,
+                "retention_rate": 0.2752
+            },
+            {
+                "cohort_month": "2013-06-01",
+                "cohort_index": 0,
+                "active_customers": 8152,
+                "cohort_size": 8152,
+                "retention_rate": 1.0
+            }
+        ]
+    },
+    "forecast_mensual": {
+        "horizon_months": 6,
+        "global": [
+            {
+                "month": "2013-07-01",
+                "yhat": 184831.16666666666,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "month": "2013-08-01",
+                "yhat": 184831.16666666666,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "month": "2013-09-01",
+                "yhat": 184831.16666666666,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "month": "2013-10-01",
+                "yhat": 184831.16666666666,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "month": "2013-11-01",
+                "yhat": 184831.16666666666,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "month": "2013-12-01",
+                "yhat": 184831.16666666666,
+                "method": "Naive-Seasonal-Avg"
+            }
+        ],
+        "tiendas": [
+            {
+                "store_id": 102,
+                "month": "2013-07-01",
+                "yhat": 52381.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 102,
+                "month": "2013-08-01",
+                "yhat": 52381.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 102,
+                "month": "2013-09-01",
+                "yhat": 52381.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 102,
+                "month": "2013-10-01",
+                "yhat": 52381.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 102,
+                "month": "2013-11-01",
+                "yhat": 52381.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 102,
+                "month": "2013-12-01",
+                "yhat": 52381.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 103,
+                "month": "2013-07-01",
+                "yhat": 67855.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 103,
+                "month": "2013-08-01",
+                "yhat": 67855.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 103,
+                "month": "2013-09-01",
+                "yhat": 67855.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 103,
+                "month": "2013-10-01",
+                "yhat": 67855.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 103,
+                "month": "2013-11-01",
+                "yhat": 67855.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 103,
+                "month": "2013-12-01",
+                "yhat": 67855.0,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 107,
+                "month": "2013-07-01",
+                "yhat": 42438.833333333336,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 107,
+                "month": "2013-08-01",
+                "yhat": 42438.833333333336,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 107,
+                "month": "2013-09-01",
+                "yhat": 42438.833333333336,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 107,
+                "month": "2013-10-01",
+                "yhat": 42438.833333333336,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 107,
+                "month": "2013-11-01",
+                "yhat": 42438.833333333336,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 107,
+                "month": "2013-12-01",
+                "yhat": 42438.833333333336,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 110,
+                "month": "2013-07-01",
+                "yhat": 22156.333333333332,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 110,
+                "month": "2013-08-01",
+                "yhat": 22156.333333333332,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 110,
+                "month": "2013-09-01",
+                "yhat": 22156.333333333332,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 110,
+                "month": "2013-10-01",
+                "yhat": 22156.333333333332,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 110,
+                "month": "2013-11-01",
+                "yhat": 22156.333333333332,
+                "method": "Naive-Seasonal-Avg"
+            },
+            {
+                "store_id": 110,
+                "month": "2013-12-01",
+                "yhat": 22156.333333333332,
+                "method": "Naive-Seasonal-Avg"
+            }
+        ]
+    }
+}

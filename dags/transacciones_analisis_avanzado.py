@@ -1,9 +1,20 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from datetime import datetime, timedelta
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import ( col, to_date, split, size, explode, count, countDistinct, sum as ssum, )
+from pyspark.sql.functions import (
+    col,
+    to_date,
+    split,
+    size,
+    explode,
+    count,
+    countDistinct,
+    sum as ssum,
+    trunc,
+)
 from pyspark.sql.types import IntegerType
 from pyspark.ml.feature import VectorAssembler, StandardScaler
 from pyspark.ml.clustering import KMeans
@@ -482,12 +493,12 @@ def calcular_forecast_mensual(ti, periods_ahead=6):
 
         monthly_global = (
             df.groupBy("month")
-            .agg(scount("*").alias("transactions"))
+            .agg(count("*").alias("transactions"))
             .orderBy("month")
         )
         monthly_store = (
             df.groupBy("store_id", "month")
-            .agg(scount("*").alias("transactions"))
+            .agg(count("*").alias("transactions"))
             .orderBy("store_id", "month")
         )
 
@@ -512,8 +523,6 @@ def calcular_forecast_mensual(ti, periods_ahead=6):
             yhat = None
             method = None
             try:
-                from statsmodels.tsa.holtwinters import ExponentialSmoothing
-
                 seasonal = "add"
                 trend = "add"
                 seasonal_periods = 12
@@ -668,10 +677,10 @@ with DAG(
         python_callable=segmentar_clientes_kmeans,
     )
 
-    tarea_recomendador = PythonOperator(
-        task_id="generar_recomendador_productos",
-        python_callable=generar_recomendador_productos,
-    )
+    # tarea_recomendador = PythonOperator(
+    #     task_id="generar_recomendador_productos",
+    #     python_callable=generar_recomendador_productos,
+    # )
 
     tarea_cohortes = PythonOperator(
         task_id="calcular_cohortes_retencion",
@@ -688,4 +697,4 @@ with DAG(
         python_callable=generar_json_modelos_avanzados,
     )
 
-    [tarea_segmentacion, tarea_recomendador, tarea_cohortes, tarea_forecast] >> tarea_json_avanzados
+    [tarea_segmentacion, tarea_cohortes, tarea_forecast] >> tarea_json_avanzados
