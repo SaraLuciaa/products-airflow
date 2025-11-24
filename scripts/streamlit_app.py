@@ -15,9 +15,9 @@ REPORTS_DIR = Path(__file__).resolve().parents[1] / "reports"
 
 
 def main():
-    st.set_page_config(page_title="Dashboard", layout="wide")
+    st.set_page_config(page_title="Supermercado :P", layout="wide")
 
-    st.title("Análisis de Transacciones de Supermercado")
+    st.title("Transacciones")
 
     # ======================================================================
     # Cargar archivo único generado por el DAG de EDA
