@@ -258,78 +258,6 @@ def estadisticas_product_category(ti):
     finally:
         spark.stop()
 
-
-# ================================================================================
-# TAREA 3: Generar Reporte Consolidado
-# ================================================================================
-def generar_reporte_consolidado(ti):
-    """
-    Genera un reporte consolidado en Excel y CSV con todos los análisis
-    """
-    import pandas as pd
-    
-    logger.info("=" * 80)
-    logger.info("GENERANDO REPORTE CONSOLIDADO")
-    logger.info("=" * 80)
-    
-    try:
-        # Obtener datos de tareas anteriores
-        revision = ti.xcom_pull(key="revision_inicial", task_ids="revision_inicial_tienda")
-        estadisticas = ti.xcom_pull(key="estadisticas", task_ids="estadisticas_product_category")
-        
-        if not revision or not estadisticas:
-            logger.warning("No se encontraron datos de tareas anteriores")
-            return
-        
-        # ==================== HOJA 1: RESUMEN GENERAL ====================
-        resumen_data = []
-        
-        for tabla, info in revision.items():
-            resumen_data.append({
-                "Tabla": tabla,
-                "Archivo": info.get("archivo", ""),
-                "Registros": info.get("num_filas", 0),
-                "Columnas": info.get("num_columnas", 0),
-                "Total Nulos": info.get("total_nulos", 0),
-                "Duplicados": info.get("num_duplicados", 0),
-                "% Duplicados": info.get("porcentaje_duplicados", 0)
-            })
-        
-        df_resumen = pd.DataFrame(resumen_data)
-        
-        # ==================== HOJA 2: DISTRIBUCIÓN DE CATEGORÍAS ====================
-        df_categorias = pd.DataFrame(estadisticas["categorias"]["distribucion_categorias"])
-                
-        # ==================== HOJA 3: ANÁLISIS DE RELACIONES ====================
-        relaciones_data = [{
-            "Métrica": key,
-            "Valor": value
-        } for key, value in estadisticas["relaciones"].items()]
-        df_relaciones = pd.DataFrame(relaciones_data)
-        
-        # Guardar en Excel
-        excel_path = os.path.join(REPORTS_PATH, "Tienda_Reporte_Completo.xlsx")
-        with pd.ExcelWriter(excel_path, engine="openpyxl") as writer:
-            df_resumen.to_excel(writer, sheet_name="Resumen General", index=False)
-            df_categorias.to_excel(writer, sheet_name="Distribución Categorías", index=False)
-            df_relaciones.to_excel(writer, sheet_name="Análisis Relaciones", index=False)
-        
-        logger.info(f"Reporte Excel generado: {excel_path}")
-        
-        # Guardar CSV del resumen
-        csv_path = os.path.join(REPORTS_PATH, "Tienda_Resumen.csv")
-        df_resumen.to_csv(csv_path, index=False, encoding="utf-8")
-        logger.info(f"Reporte CSV generado: {csv_path}")
-        
-        logger.info("=" * 80)
-        logger.info("REPORTE CONSOLIDADO COMPLETADO")
-        logger.info("=" * 80)
-        
-    except Exception as e:
-        logger.error(f"Error generando reporte: {e}")
-        raise
-
-
 # ================================================================================
 # DEFINICIÓN DEL DAG
 # ================================================================================
@@ -352,9 +280,4 @@ with DAG(
         python_callable=estadisticas_product_category
     )
     
-    tarea_3 = PythonOperator(
-        task_id='generar_reporte_consolidado',
-        python_callable=generar_reporte_consolidado
-    )
-    
-    tarea_1 >> tarea_2 >> tarea_3
+    tarea_1 >> tarea_2
