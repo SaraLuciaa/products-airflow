@@ -1,0 +1,52 @@
+{
+    "global": {
+        "archivos_procesados": [
+            "107_Tran.csv",
+            "110_Tran.csv",
+            "102_Tran.csv",
+            "103_Tran.csv"
+        ],
+        "num_archivos": 4,
+        "tiendas_unicas": 4,
+        "estructura": {
+            "num_transacciones": 1108987,
+            "num_columnas": 4,
+            "columnas": [
+                "date",
+                "store_id",
+                "customer_id",
+                "products"
+            ],
+            "tipos_datos": {
+                "date": "DateType()",
+                "store_id": "IntegerType()",
+                "customer_id": "IntegerType()",
+                "products": "StringType()"
+            }
+        },
+        "calidad_datos": {
+            "valores_nulos": {
+                "date": 0,
+                "store_id": 0,
+                "customer_id": 0,
+                "products": 0
+            },
+            "total_nulos": 0,
+            "duplicados_exactos": 1,
+            "duplicados_cliente_fecha": 3687,
+            "porcentaje_duplicados_exactos": 0.0
+        },
+        "analisis_productos": {
+            "productos_por_transaccion": {
+                "promedio": 9.55,
+                "minimo": 1,
+                "maximo": 128,
+                "desviacion_estandar": 10.0
+            }
+        },
+        "rango_temporal": {
+            "fecha_inicio": "2013-01-01",
+            "fecha_fin": "2013-06-30"
+        }
+    }
+}

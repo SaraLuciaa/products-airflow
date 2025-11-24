@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Colombia-inspired color palette */
+    --background: 45 100% 98%;
+    --foreground: 220 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
+
+    /* Colombian yellow - vibrant and warm */
+    --primary: 45 100% 55%;
+    --primary-foreground: 220 25% 15%;
+
+    /* Colombian red - vibrant accent */
+    --secondary: 355 85% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 45 45% 95%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Colombian blue - deep and rich */
+    --accent: 215 80% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 35% 88%;
+    --input: 45 35% 88%;
+    --ring: 45 100% 55%;
+
+    --radius: 0.75rem;
+
+    /* Tropical success green */
+    --success: 145 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Custom gradients for Colombian theme */
+    --gradient-sunset: linear-gradient(135deg, hsl(45 100% 65%), hsl(355 85% 60%));
+    --gradient-tropical: linear-gradient(135deg, hsl(145 70% 55%), hsl(215 80% 55%));
+    --gradient-flag: linear-gradient(180deg, hsl(45 100% 55%) 0%, hsl(45 100% 55%) 50%, hsl(215 80% 45%) 50%, hsl(215 80% 45%) 75%, hsl(355 85% 55%) 75%, hsl(355 85% 55%) 100%);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 15%;
+    --sidebar-primary: 45 100% 55%;
+    --sidebar-primary-foreground: 220 25% 15%;
+    --sidebar-accent: 45 45% 95%;
+    --sidebar-accent-foreground: 220 25% 15%;
+    --sidebar-border: 45 35% 88%;
+    --sidebar-ring: 45 100% 55%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 45 45% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 45 45% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 45 45% 95%;
+
+    --primary: 45 100% 60%;
+    --primary-foreground: 220 25% 10%;
+
+    --secondary: 355 80% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 45 25% 65%;
+
+    --accent: 215 75% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 45 100% 60%;
+
+    --success: 145 65% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --gradient-sunset: linear-gradient(135deg, hsl(45 95% 55%), hsl(355 80% 50%));
+    --gradient-tropical: linear-gradient(135deg, hsl(145 65% 45%), hsl(215 75% 50%));
+    --gradient-flag: linear-gradient(180deg, hsl(45 95% 55%) 0%, hsl(45 95% 55%) 50%, hsl(215 75% 50%) 50%, hsl(215 75% 50%) 75%, hsl(355 80% 50%) 75%, hsl(355 80% 50%) 100%);
+
+    --sidebar-background: 220 20% 12%;
+    --sidebar-foreground: 45 45% 95%;
+    --sidebar-primary: 45 100% 60%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 45 45% 95%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 45 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .gradient-sunset {
+    background: var(--gradient-sunset);
+  }
+  
+  .gradient-tropical {
+    background: var(--gradient-tropical);
+  }
+  
+  .gradient-flag {
+    background: var(--gradient-flag);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

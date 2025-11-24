@@ -1,0 +1,42 @@
+{
+    "Categories": {
+        "archivo": "Products/Categories.csv",
+        "num_filas": 50,
+        "num_columnas": 2,
+        "columnas": [
+            "id",
+            "category_name"
+        ],
+        "tipos_datos": {
+            "id": "IntegerType()",
+            "category_name": "StringType()"
+        },
+        "valores_nulos": {
+            "id": 0,
+            "category_name": 0
+        },
+        "total_nulos": 0,
+        "num_duplicados": 0,
+        "porcentaje_duplicados": 0.0
+    },
+    "ProductCategory": {
+        "archivo": "Products/ProductCategory.csv",
+        "num_filas": 112010,
+        "num_columnas": 2,
+        "columnas": [
+            "v.code_pr",
+            "v.code"
+        ],
+        "tipos_datos": {
+            "v.code_pr": "IntegerType()",
+            "v.code": "IntegerType()"
+        },
+        "valores_nulos": {
+            "v.code_pr": 0,
+            "v.code": 0
+        },
+        "total_nulos": 0,
+        "num_duplicados": 18473,
+        "porcentaje_duplicados": 16.49
+    }
+}

@@ -1,0 +1,1217 @@
+{
+    "revision_inicial": {
+        "archivos_procesados": [
+            "102_Tran.csv",
+            "103_Tran.csv",
+            "107_Tran.csv",
+            "110_Tran.csv"
+        ],
+        "num_archivos": 4,
+        "tiendas_unicas": 4,
+        "estructura": {
+            "num_transacciones": 1108987,
+            "num_columnas": 4,
+            "columnas": [
+                "date",
+                "store_id",
+                "customer_id",
+                "products"
+            ],
+            "tipos_datos": {
+                "date": "DateType()",
+                "store_id": "IntegerType()",
+                "customer_id": "IntegerType()",
+                "products": "StringType()"
+            }
+        },
+        "calidad_datos": {
+            "valores_nulos": {
+                "date": 0,
+                "store_id": 0,
+                "customer_id": 0,
+                "products": 0
+            },
+            "total_nulos": 0,
+            "duplicados_exactos": 1,
+            "duplicados_cliente_fecha": 3687,
+            "porcentaje_duplicados_exactos": 0.0
+        },
+        "analisis_productos": {
+            "productos_por_transaccion": {
+                "promedio": 9.55,
+                "minimo": 1,
+                "maximo": 128,
+                "desviacion_estandar": 10.0
+            }
+        },
+        "rango_temporal": {
+            "fecha_inicio": "2013-01-01",
+            "fecha_fin": "2013-06-30"
+        }
+    },
+    "estadisticas": {
+        "archivos_procesados": [
+            "102_Tran.csv",
+            "103_Tran.csv",
+            "107_Tran.csv",
+            "110_Tran.csv"
+        ],
+        "num_archivos": 4,
+        "total_transacciones": 1108987,
+        "estadisticas_numericas": {
+            "num_productos_por_transaccion": {
+                "media": 9.55,
+                "mediana": 6,
+                "moda": 1,
+                "desviacion_estandar": 10.0,
+                "minimo": 1,
+                "maximo": 128,
+                "percentil_25": 3,
+                "percentil_75": 12,
+                "rango_intercuartil_iqr": 9,
+                "outliers_count": 89733
+            }
+        },
+        "estadisticas_categoricas": {
+            "customer_id": {
+                "clientes_unicos": 131186,
+                "moda": 336296
+            },
+            "top_10_clientes_mas_compras": {
+                "total_clientes_unicos": 131186,
+                "top_10": [
+                    {
+                        "customer_id": 336296,
+                        "frecuencia_absoluta": 535,
+                        "frecuencia_relativa_pct": 0.05
+                    },
+                    {
+                        "customer_id": 440157,
+                        "frecuencia_absoluta": 163,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 806377,
+                        "frecuencia_absoluta": 159,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 576930,
+                        "frecuencia_absoluta": 157,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 525328,
+                        "frecuencia_absoluta": 149,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 307063,
+                        "frecuencia_absoluta": 148,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 517807,
+                        "frecuencia_absoluta": 144,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 908225,
+                        "frecuencia_absoluta": 134,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 51733,
+                        "frecuencia_absoluta": 130,
+                        "frecuencia_relativa_pct": 0.01
+                    },
+                    {
+                        "customer_id": 212565,
+                        "frecuencia_absoluta": 129,
+                        "frecuencia_relativa_pct": 0.01
+                    }
+                ]
+            },
+            "top_10_productos_mas_vendidos": {
+                "total_productos_vendidos": 10591793,
+                "productos_unicos": 449,
+                "top_10": [
+                    {
+                        "product_id": 5,
+                        "frecuencia_absoluta": 300526,
+                        "frecuencia_relativa_pct": 2.84
+                    },
+                    {
+                        "product_id": 10,
+                        "frecuencia_absoluta": 290313,
+                        "frecuencia_relativa_pct": 2.74
+                    },
+                    {
+                        "product_id": 3,
+                        "frecuencia_absoluta": 269855,
+                        "frecuencia_relativa_pct": 2.55
+                    },
+                    {
+                        "product_id": 4,
+                        "frecuencia_absoluta": 260418,
+                        "frecuencia_relativa_pct": 2.46
+                    },
+                    {
+                        "product_id": 6,
+                        "frecuencia_absoluta": 254644,
+                        "frecuencia_relativa_pct": 2.4
+                    },
+                    {
+                        "product_id": 8,
+                        "frecuencia_absoluta": 253899,
+                        "frecuencia_relativa_pct": 2.4
+                    },
+                    {
+                        "product_id": 7,
+                        "frecuencia_absoluta": 225877,
+                        "frecuencia_relativa_pct": 2.13
+                    },
+                    {
+                        "product_id": 16,
+                        "frecuencia_absoluta": 224159,
+                        "frecuencia_relativa_pct": 2.12
+                    },
+                    {
+                        "product_id": 11,
+                        "frecuencia_absoluta": 221968,
+                        "frecuencia_relativa_pct": 2.1
+                    },
+                    {
+                        "product_id": 9,
+                        "frecuencia_absoluta": 212480,
+                        "frecuencia_relativa_pct": 2.01
+                    }
+                ]
+            },
+            "distribucion_temporal_mensual": [
+                {
+                    "year": 2013,
+                    "month": 1,
+                    "num_transacciones": 184916,
+                    "porcentaje": 16.67
+                },
+                {
+                    "year": 2013,
+                    "month": 2,
+                    "num_transacciones": 170771,
+                    "porcentaje": 15.4
+                },
+                {
+                    "year": 2013,
+                    "month": 3,
+                    "num_transacciones": 189313,
+                    "porcentaje": 17.07
+                },
+                {
+                    "year": 2013,
+                    "month": 4,
+                    "num_transacciones": 182632,
+                    "porcentaje": 16.47
+                },
+                {
+                    "year": 2013,
+                    "month": 5,
+                    "num_transacciones": 188199,
+                    "porcentaje": 16.97
+                },
+                {
+                    "year": 2013,
+                    "month": 6,
+                    "num_transacciones": 193156,
+                    "porcentaje": 17.42
+                }
+            ],
+            "distribucion_dia_semana": [
+                {
+                    "dia_semana": "Domingo",
+                    "num_transacciones": 191406,
+                    "porcentaje": 17.26
+                },
+                {
+                    "dia_semana": "Lunes",
+                    "num_transacciones": 142445,
+                    "porcentaje": 12.84
+                },
+                {
+                    "dia_semana": "Martes",
+                    "num_transacciones": 150739,
+                    "porcentaje": 13.59
+                },
+                {
+                    "dia_semana": "Miércoles",
+                    "num_transacciones": 137245,
+                    "porcentaje": 12.38
+                },
+                {
+                    "dia_semana": "Jueves",
+                    "num_transacciones": 158766,
+                    "porcentaje": 14.32
+                },
+                {
+                    "dia_semana": "Viernes",
+                    "num_transacciones": 139371,
+                    "porcentaje": 12.57
+                },
+                {
+                    "dia_semana": "Sábado",
+                    "num_transacciones": 189015,
+                    "porcentaje": 17.04
+                }
+            ],
+            "distribucion_por_tienda": [
+                {
+                    "store_id": 103,
+                    "num_transacciones": 407130,
+                    "porcentaje": 36.71
+                },
+                {
+                    "store_id": 102,
+                    "num_transacciones": 314286,
+                    "porcentaje": 28.34
+                },
+                {
+                    "store_id": 107,
+                    "num_transacciones": 254633,
+                    "porcentaje": 22.96
+                },
+                {
+                    "store_id": 110,
+                    "num_transacciones": 132938,
+                    "porcentaje": 11.99
+                }
+            ],
+            "distribucion_temporal_diaria": [
+                {
+                    "date": "2013-01-01",
+                    "num_transacciones": 2860
+                },
+                {
+                    "date": "2013-01-02",
+                    "num_transacciones": 6577
+                },
+                {
+                    "date": "2013-01-03",
+                    "num_transacciones": 6539
+                },
+                {
+                    "date": "2013-01-04",
+                    "num_transacciones": 5961
+                },
+                {
+                    "date": "2013-01-05",
+                    "num_transacciones": 6405
+                },
+                {
+                    "date": "2013-01-06",
+                    "num_transacciones": 5217
+                },
+                {
+                    "date": "2013-01-07",
+                    "num_transacciones": 5934
+                },
+                {
+                    "date": "2013-01-08",
+                    "num_transacciones": 6380
+                },
+                {
+                    "date": "2013-01-09",
+                    "num_transacciones": 5587
+                },
+                {
+                    "date": "2013-01-10",
+                    "num_transacciones": 6090
+                },
+                {
+                    "date": "2013-01-11",
+                    "num_transacciones": 5167
+                },
+                {
+                    "date": "2013-01-12",
+                    "num_transacciones": 6418
+                },
+                {
+                    "date": "2013-01-13",
+                    "num_transacciones": 6705
+                },
+                {
+                    "date": "2013-01-14",
+                    "num_transacciones": 5825
+                },
+                {
+                    "date": "2013-01-15",
+                    "num_transacciones": 6289
+                },
+                {
+                    "date": "2013-01-16",
+                    "num_transacciones": 5989
+                },
+                {
+                    "date": "2013-01-17",
+                    "num_transacciones": 6364
+                },
+                {
+                    "date": "2013-01-18",
+                    "num_transacciones": 5261
+                },
+                {
+                    "date": "2013-01-19",
+                    "num_transacciones": 6981
+                },
+                {
+                    "date": "2013-01-20",
+                    "num_transacciones": 7400
+                },
+                {
+                    "date": "2013-01-21",
+                    "num_transacciones": 5732
+                },
+                {
+                    "date": "2013-01-22",
+                    "num_transacciones": 5547
+                },
+                {
+                    "date": "2013-01-23",
+                    "num_transacciones": 4757
+                },
+                {
+                    "date": "2013-01-24",
+                    "num_transacciones": 5420
+                },
+                {
+                    "date": "2013-01-25",
+                    "num_transacciones": 5191
+                },
+                {
+                    "date": "2013-01-26",
+                    "num_transacciones": 6978
+                },
+                {
+                    "date": "2013-01-27",
+                    "num_transacciones": 7392
+                },
+                {
+                    "date": "2013-01-28",
+                    "num_transacciones": 5714
+                },
+                {
+                    "date": "2013-01-29",
+                    "num_transacciones": 5782
+                },
+                {
+                    "date": "2013-01-30",
+                    "num_transacciones": 5592
+                },
+                {
+                    "date": "2013-01-31",
+                    "num_transacciones": 6862
+                },
+                {
+                    "date": "2013-02-01",
+                    "num_transacciones": 6352
+                },
+                {
+                    "date": "2013-02-02",
+                    "num_transacciones": 8003
+                },
+                {
+                    "date": "2013-02-03",
+                    "num_transacciones": 8523
+                },
+                {
+                    "date": "2013-02-04",
+                    "num_transacciones": 5781
+                },
+                {
+                    "date": "2013-02-05",
+                    "num_transacciones": 6052
+                },
+                {
+                    "date": "2013-02-06",
+                    "num_transacciones": 4997
+                },
+                {
+                    "date": "2013-02-07",
+                    "num_transacciones": 6317
+                },
+                {
+                    "date": "2013-02-08",
+                    "num_transacciones": 4823
+                },
+                {
+                    "date": "2013-02-09",
+                    "num_transacciones": 6814
+                },
+                {
+                    "date": "2013-02-10",
+                    "num_transacciones": 7883
+                },
+                {
+                    "date": "2013-02-11",
+                    "num_transacciones": 5079
+                },
+                {
+                    "date": "2013-02-12",
+                    "num_transacciones": 5363
+                },
+                {
+                    "date": "2013-02-13",
+                    "num_transacciones": 5045
+                },
+                {
+                    "date": "2013-02-14",
+                    "num_transacciones": 5904
+                },
+                {
+                    "date": "2013-02-15",
+                    "num_transacciones": 5373
+                },
+                {
+                    "date": "2013-02-16",
+                    "num_transacciones": 7610
+                },
+                {
+                    "date": "2013-02-17",
+                    "num_transacciones": 7866
+                },
+                {
+                    "date": "2013-02-18",
+                    "num_transacciones": 5516
+                },
+                {
+                    "date": "2013-02-19",
+                    "num_transacciones": 5716
+                },
+                {
+                    "date": "2013-02-20",
+                    "num_transacciones": 4897
+                },
+                {
+                    "date": "2013-02-21",
+                    "num_transacciones": 5869
+                },
+                {
+                    "date": "2013-02-22",
+                    "num_transacciones": 4695
+                },
+                {
+                    "date": "2013-02-23",
+                    "num_transacciones": 6423
+                },
+                {
+                    "date": "2013-02-24",
+                    "num_transacciones": 7184
+                },
+                {
+                    "date": "2013-02-25",
+                    "num_transacciones": 5249
+                },
+                {
+                    "date": "2013-02-26",
+                    "num_transacciones": 5738
+                },
+                {
+                    "date": "2013-02-27",
+                    "num_transacciones": 4870
+                },
+                {
+                    "date": "2013-02-28",
+                    "num_transacciones": 6829
+                },
+                {
+                    "date": "2013-03-01",
+                    "num_transacciones": 6242
+                },
+                {
+                    "date": "2013-03-02",
+                    "num_transacciones": 8160
+                },
+                {
+                    "date": "2013-03-03",
+                    "num_transacciones": 8426
+                },
+                {
+                    "date": "2013-03-04",
+                    "num_transacciones": 5646
+                },
+                {
+                    "date": "2013-03-05",
+                    "num_transacciones": 5841
+                },
+                {
+                    "date": "2013-03-06",
+                    "num_transacciones": 4876
+                },
+                {
+                    "date": "2013-03-07",
+                    "num_transacciones": 6596
+                },
+                {
+                    "date": "2013-03-08",
+                    "num_transacciones": 4948
+                },
+                {
+                    "date": "2013-03-09",
+                    "num_transacciones": 6715
+                },
+                {
+                    "date": "2013-03-10",
+                    "num_transacciones": 7358
+                },
+                {
+                    "date": "2013-03-11",
+                    "num_transacciones": 5125
+                },
+                {
+                    "date": "2013-03-12",
+                    "num_transacciones": 5491
+                },
+                {
+                    "date": "2013-03-13",
+                    "num_transacciones": 4482
+                },
+                {
+                    "date": "2013-03-14",
+                    "num_transacciones": 5864
+                },
+                {
+                    "date": "2013-03-15",
+                    "num_transacciones": 5259
+                },
+                {
+                    "date": "2013-03-16",
+                    "num_transacciones": 7148
+                },
+                {
+                    "date": "2013-03-17",
+                    "num_transacciones": 7878
+                },
+                {
+                    "date": "2013-03-18",
+                    "num_transacciones": 5294
+                },
+                {
+                    "date": "2013-03-19",
+                    "num_transacciones": 5510
+                },
+                {
+                    "date": "2013-03-20",
+                    "num_transacciones": 4646
+                },
+                {
+                    "date": "2013-03-21",
+                    "num_transacciones": 5742
+                },
+                {
+                    "date": "2013-03-22",
+                    "num_transacciones": 5077
+                },
+                {
+                    "date": "2013-03-23",
+                    "num_transacciones": 7123
+                },
+                {
+                    "date": "2013-03-24",
+                    "num_transacciones": 6177
+                },
+                {
+                    "date": "2013-03-25",
+                    "num_transacciones": 6056
+                },
+                {
+                    "date": "2013-03-26",
+                    "num_transacciones": 6040
+                },
+                {
+                    "date": "2013-03-27",
+                    "num_transacciones": 7251
+                },
+                {
+                    "date": "2013-03-28",
+                    "num_transacciones": 6897
+                },
+                {
+                    "date": "2013-03-29",
+                    "num_transacciones": 3935
+                },
+                {
+                    "date": "2013-03-30",
+                    "num_transacciones": 6695
+                },
+                {
+                    "date": "2013-03-31",
+                    "num_transacciones": 6815
+                },
+                {
+                    "date": "2013-04-01",
+                    "num_transacciones": 6389
+                },
+                {
+                    "date": "2013-04-02",
+                    "num_transacciones": 6720
+                },
+                {
+                    "date": "2013-04-03",
+                    "num_transacciones": 5611
+                },
+                {
+                    "date": "2013-04-04",
+                    "num_transacciones": 6428
+                },
+                {
+                    "date": "2013-04-05",
+                    "num_transacciones": 5195
+                },
+                {
+                    "date": "2013-04-06",
+                    "num_transacciones": 7125
+                },
+                {
+                    "date": "2013-04-07",
+                    "num_transacciones": 8265
+                },
+                {
+                    "date": "2013-04-08",
+                    "num_transacciones": 5031
+                },
+                {
+                    "date": "2013-04-09",
+                    "num_transacciones": 5561
+                },
+                {
+                    "date": "2013-04-10",
+                    "num_transacciones": 4943
+                },
+                {
+                    "date": "2013-04-11",
+                    "num_transacciones": 5628
+                },
+                {
+                    "date": "2013-04-12",
+                    "num_transacciones": 4774
+                },
+                {
+                    "date": "2013-04-13",
+                    "num_transacciones": 7120
+                },
+                {
+                    "date": "2013-04-14",
+                    "num_transacciones": 7937
+                },
+                {
+                    "date": "2013-04-15",
+                    "num_transacciones": 6006
+                },
+                {
+                    "date": "2013-04-16",
+                    "num_transacciones": 6517
+                },
+                {
+                    "date": "2013-04-17",
+                    "num_transacciones": 4999
+                },
+                {
+                    "date": "2013-04-18",
+                    "num_transacciones": 6260
+                },
+                {
+                    "date": "2013-04-19",
+                    "num_transacciones": 5028
+                },
+                {
+                    "date": "2013-04-20",
+                    "num_transacciones": 6824
+                },
+                {
+                    "date": "2013-04-21",
+                    "num_transacciones": 8126
+                },
+                {
+                    "date": "2013-04-22",
+                    "num_transacciones": 5027
+                },
+                {
+                    "date": "2013-04-23",
+                    "num_transacciones": 4948
+                },
+                {
+                    "date": "2013-04-24",
+                    "num_transacciones": 4776
+                },
+                {
+                    "date": "2013-04-25",
+                    "num_transacciones": 5808
+                },
+                {
+                    "date": "2013-04-26",
+                    "num_transacciones": 5186
+                },
+                {
+                    "date": "2013-04-27",
+                    "num_transacciones": 6921
+                },
+                {
+                    "date": "2013-04-28",
+                    "num_transacciones": 8286
+                },
+                {
+                    "date": "2013-04-29",
+                    "num_transacciones": 4850
+                },
+                {
+                    "date": "2013-04-30",
+                    "num_transacciones": 6343
+                },
+                {
+                    "date": "2013-05-01",
+                    "num_transacciones": 7495
+                },
+                {
+                    "date": "2013-05-02",
+                    "num_transacciones": 5516
+                },
+                {
+                    "date": "2013-05-03",
+                    "num_transacciones": 5913
+                },
+                {
+                    "date": "2013-05-04",
+                    "num_transacciones": 7190
+                },
+                {
+                    "date": "2013-05-05",
+                    "num_transacciones": 7637
+                },
+                {
+                    "date": "2013-05-06",
+                    "num_transacciones": 5431
+                },
+                {
+                    "date": "2013-05-07",
+                    "num_transacciones": 6126
+                },
+                {
+                    "date": "2013-05-08",
+                    "num_transacciones": 5012
+                },
+                {
+                    "date": "2013-05-09",
+                    "num_transacciones": 5880
+                },
+                {
+                    "date": "2013-05-10",
+                    "num_transacciones": 5461
+                },
+                {
+                    "date": "2013-05-11",
+                    "num_transacciones": 8854
+                },
+                {
+                    "date": "2013-05-12",
+                    "num_transacciones": 6527
+                },
+                {
+                    "date": "2013-05-13",
+                    "num_transacciones": 6707
+                },
+                {
+                    "date": "2013-05-14",
+                    "num_transacciones": 5779
+                },
+                {
+                    "date": "2013-05-15",
+                    "num_transacciones": 5171
+                },
+                {
+                    "date": "2013-05-16",
+                    "num_transacciones": 6864
+                },
+                {
+                    "date": "2013-05-17",
+                    "num_transacciones": 5477
+                },
+                {
+                    "date": "2013-05-18",
+                    "num_transacciones": 7104
+                },
+                {
+                    "date": "2013-05-19",
+                    "num_transacciones": 7559
+                },
+                {
+                    "date": "2013-05-20",
+                    "num_transacciones": 4998
+                },
+                {
+                    "date": "2013-05-21",
+                    "num_transacciones": 5944
+                },
+                {
+                    "date": "2013-05-22",
+                    "num_transacciones": 3753
+                },
+                {
+                    "date": "2013-05-23",
+                    "num_transacciones": 5762
+                },
+                {
+                    "date": "2013-05-24",
+                    "num_transacciones": 4799
+                },
+                {
+                    "date": "2013-05-25",
+                    "num_transacciones": 6756
+                },
+                {
+                    "date": "2013-05-26",
+                    "num_transacciones": 6562
+                },
+                {
+                    "date": "2013-05-27",
+                    "num_transacciones": 5544
+                },
+                {
+                    "date": "2013-05-28",
+                    "num_transacciones": 5934
+                },
+                {
+                    "date": "2013-05-29",
+                    "num_transacciones": 4966
+                },
+                {
+                    "date": "2013-05-30",
+                    "num_transacciones": 5574
+                },
+                {
+                    "date": "2013-05-31",
+                    "num_transacciones": 5904
+                },
+                {
+                    "date": "2013-06-01",
+                    "num_transacciones": 8420
+                },
+                {
+                    "date": "2013-06-02",
+                    "num_transacciones": 7319
+                },
+                {
+                    "date": "2013-06-03",
+                    "num_transacciones": 7754
+                },
+                {
+                    "date": "2013-06-04",
+                    "num_transacciones": 6485
+                },
+                {
+                    "date": "2013-06-05",
+                    "num_transacciones": 5470
+                },
+                {
+                    "date": "2013-06-06",
+                    "num_transacciones": 6184
+                },
+                {
+                    "date": "2013-06-07",
+                    "num_transacciones": 5664
+                },
+                {
+                    "date": "2013-06-08",
+                    "num_transacciones": 6917
+                },
+                {
+                    "date": "2013-06-09",
+                    "num_transacciones": 6200
+                },
+                {
+                    "date": "2013-06-10",
+                    "num_transacciones": 6652
+                },
+                {
+                    "date": "2013-06-11",
+                    "num_transacciones": 5571
+                },
+                {
+                    "date": "2013-06-12",
+                    "num_transacciones": 5057
+                },
+                {
+                    "date": "2013-06-13",
+                    "num_transacciones": 5706
+                },
+                {
+                    "date": "2013-06-14",
+                    "num_transacciones": 5658
+                },
+                {
+                    "date": "2013-06-15",
+                    "num_transacciones": 9476
+                },
+                {
+                    "date": "2013-06-16",
+                    "num_transacciones": 8126
+                },
+                {
+                    "date": "2013-06-17",
+                    "num_transacciones": 5988
+                },
+                {
+                    "date": "2013-06-18",
+                    "num_transacciones": 6311
+                },
+                {
+                    "date": "2013-06-19",
+                    "num_transacciones": 5104
+                },
+                {
+                    "date": "2013-06-20",
+                    "num_transacciones": 5957
+                },
+                {
+                    "date": "2013-06-21",
+                    "num_transacciones": 5752
+                },
+                {
+                    "date": "2013-06-22",
+                    "num_transacciones": 6679
+                },
+                {
+                    "date": "2013-06-23",
+                    "num_transacciones": 6965
+                },
+                {
+                    "date": "2013-06-24",
+                    "num_transacciones": 5117
+                },
+                {
+                    "date": "2013-06-25",
+                    "num_transacciones": 5891
+                },
+                {
+                    "date": "2013-06-26",
+                    "num_transacciones": 5322
+                },
+                {
+                    "date": "2013-06-27",
+                    "num_transacciones": 5906
+                },
+                {
+                    "date": "2013-06-28",
+                    "num_transacciones": 6276
+                },
+                {
+                    "date": "2013-06-29",
+                    "num_transacciones": 8156
+                },
+                {
+                    "date": "2013-06-30",
+                    "num_transacciones": 7073
+                }
+            ],
+            "distribucion_temporal_semanal": [
+                {
+                    "year": 2013,
+                    "week_of_year": 1,
+                    "num_transacciones": 33559
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 2,
+                    "num_transacciones": 42281
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 3,
+                    "num_transacciones": 44109
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 4,
+                    "num_transacciones": 41017
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 5,
+                    "num_transacciones": 46828
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 6,
+                    "num_transacciones": 42667
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 7,
+                    "num_transacciones": 42240
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 8,
+                    "num_transacciones": 40300
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 9,
+                    "num_transacciones": 45514
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 10,
+                    "num_transacciones": 41980
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 11,
+                    "num_transacciones": 41247
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 12,
+                    "num_transacciones": 39569
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 13,
+                    "num_transacciones": 43689
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 14,
+                    "num_transacciones": 45733
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 15,
+                    "num_transacciones": 40994
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 16,
+                    "num_transacciones": 43760
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 17,
+                    "num_transacciones": 40952
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 18,
+                    "num_transacciones": 44944
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 19,
+                    "num_transacciones": 43291
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 20,
+                    "num_transacciones": 44661
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 21,
+                    "num_transacciones": 38574
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 22,
+                    "num_transacciones": 43661
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 23,
+                    "num_transacciones": 44674
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 24,
+                    "num_transacciones": 46246
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 25,
+                    "num_transacciones": 42756
+                },
+                {
+                    "year": 2013,
+                    "week_of_year": 26,
+                    "num_transacciones": 43741
+                }
+            ],
+            "tiempo_entre_compras": {
+                "promedio_global_dias": 26.39
+            }
+        },
+        "top_categorias_por_ventas": {
+            "top_n": 10,
+            "total_unidades": 15272155,
+            "top": [
+                {
+                    "category_id": null,
+                    "category_name": null,
+                    "unidades_vendidas": 5330800,
+                    "porcentaje": 34.91
+                },
+                {
+                    "category_id": 7,
+                    "category_name": "CARNES PROCESADAS AL VACIO",
+                    "unidades_vendidas": 1811523,
+                    "porcentaje": 11.86
+                },
+                {
+                    "category_id": 6,
+                    "category_name": "VERDURAS RAIZ,TUBERCULO Y BULBOS",
+                    "unidades_vendidas": 1811523,
+                    "porcentaje": 11.86
+                },
+                {
+                    "category_id": 3,
+                    "category_name": "VERDURAS DE FRUTOS",
+                    "unidades_vendidas": 1410750,
+                    "porcentaje": 9.24
+                },
+                {
+                    "category_id": 4,
+                    "category_name": "CUIDADO DE LA ROPA",
+                    "unidades_vendidas": 1410750,
+                    "porcentaje": 9.24
+                },
+                {
+                    "category_id": 18,
+                    "category_name": "VERDURAS DE HOJAS",
+                    "unidades_vendidas": 729513,
+                    "porcentaje": 4.78
+                },
+                {
+                    "category_id": 17,
+                    "category_name": "JUGOS",
+                    "unidades_vendidas": 729513,
+                    "porcentaje": 4.78
+                },
+                {
+                    "category_id": 20,
+                    "category_name": "AROMATICAS CONDIMENTOS",
+                    "unidades_vendidas": 493388,
+                    "porcentaje": 3.23
+                },
+                {
+                    "category_id": 25,
+                    "category_name": "PASTAS COMESTIBLES",
+                    "unidades_vendidas": 491896,
+                    "porcentaje": 3.22
+                },
+                {
+                    "category_id": 28,
+                    "category_name": "AROMATICAS MEDICINALES",
+                    "unidades_vendidas": 294753,
+                    "porcentaje": 1.93
+                }
+            ]
+        }
+    }
+}

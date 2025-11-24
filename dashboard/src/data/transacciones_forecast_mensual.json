@@ -1,0 +1,181 @@
+{
+    "horizon_months": 6,
+    "global": [
+        {
+            "month": "2013-07-01",
+            "yhat": 172450,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "month": "2013-08-01",
+            "yhat": 195230,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "month": "2013-09-01",
+            "yhat": 178900,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "month": "2013-10-01",
+            "yhat": 188650,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "month": "2013-11-01",
+            "yhat": 201580,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "month": "2013-12-01",
+            "yhat": 218200,
+            "method": "Naive-Seasonal-Avg"
+        }
+    ],
+    "tiendas": [
+        {
+            "store_id": 102,
+            "month": "2013-07-01",
+            "yhat": 48200,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 102,
+            "month": "2013-08-01",
+            "yhat": 54850,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 102,
+            "month": "2013-09-01",
+            "yhat": 50120,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 102,
+            "month": "2013-10-01",
+            "yhat": 53760,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 102,
+            "month": "2013-11-01",
+            "yhat": 56940,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 102,
+            "month": "2013-12-01",
+            "yhat": 62500,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 103,
+            "month": "2013-07-01",
+            "yhat": 63400,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 103,
+            "month": "2013-08-01",
+            "yhat": 71250,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 103,
+            "month": "2013-09-01",
+            "yhat": 65800,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 103,
+            "month": "2013-10-01",
+            "yhat": 68920,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 103,
+            "month": "2013-11-01",
+            "yhat": 73560,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 103,
+            "month": "2013-12-01",
+            "yhat": 79800,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 107,
+            "month": "2013-07-01",
+            "yhat": 39650,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 107,
+            "month": "2013-08-01",
+            "yhat": 45280,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 107,
+            "month": "2013-09-01",
+            "yhat": 41200,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 107,
+            "month": "2013-10-01",
+            "yhat": 43870,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 107,
+            "month": "2013-11-01",
+            "yhat": 47120,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 107,
+            "month": "2013-12-01",
+            "yhat": 51300,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 110,
+            "month": "2013-07-01",
+            "yhat": 21200,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 110,
+            "month": "2013-08-01",
+            "yhat": 23850,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 110,
+            "month": "2013-09-01",
+            "yhat": 21780,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 110,
+            "month": "2013-10-01",
+            "yhat": 22100,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 110,
+            "month": "2013-11-01",
+            "yhat": 23960,
+            "method": "Naive-Seasonal-Avg"
+        },
+        {
+            "store_id": 110,
+            "month": "2013-12-01",
+            "yhat": 24600,
+            "method": "Naive-Seasonal-Avg"
+        }
+    ]
+}

@@ -1,0 +1,1608 @@
+{
+    "global": {
+        "archivos_procesados": [
+            "107_Tran.csv",
+            "110_Tran.csv",
+            "102_Tran.csv",
+            "103_Tran.csv"
+        ],
+        "num_archivos": 4,
+        "total_transacciones": 1108987,
+        "estadisticas_numericas": {
+            "num_productos_por_transaccion": {
+                "media": 9.55,
+                "mediana": 6,
+                "moda": 1,
+                "desviacion_estandar": 10.0,
+                "minimo": 1,
+                "maximo": 128,
+                "percentil_25": 3,
+                "percentil_75": 12,
+                "rango_intercuartil_iqr": 9,
+                "outliers_count": 89733
+            }
+        },
+        "estadisticas_categoricas": {
+            "customer_id": {
+                "clientes_unicos": 131186,
+                "moda": 336296
+            },
+            "top_30_productos_mas_vendidos": {
+                "total_productos_vendidos": 10591793,
+                "productos_unicos": 449,
+                "top_30": [
+                    {
+                        "product_id": 5,
+                        "frecuencia_absoluta": 300526,
+                        "frecuencia_relativa_pct": 2.84
+                    },
+                    {
+                        "product_id": 10,
+                        "frecuencia_absoluta": 290313,
+                        "frecuencia_relativa_pct": 2.74
+                    },
+                    {
+                        "product_id": 3,
+                        "frecuencia_absoluta": 269855,
+                        "frecuencia_relativa_pct": 2.55
+                    },
+                    {
+                        "product_id": 4,
+                        "frecuencia_absoluta": 260418,
+                        "frecuencia_relativa_pct": 2.46
+                    },
+                    {
+                        "product_id": 6,
+                        "frecuencia_absoluta": 254644,
+                        "frecuencia_relativa_pct": 2.4
+                    },
+                    {
+                        "product_id": 8,
+                        "frecuencia_absoluta": 253899,
+                        "frecuencia_relativa_pct": 2.4
+                    },
+                    {
+                        "product_id": 7,
+                        "frecuencia_absoluta": 225877,
+                        "frecuencia_relativa_pct": 2.13
+                    },
+                    {
+                        "product_id": 16,
+                        "frecuencia_absoluta": 224159,
+                        "frecuencia_relativa_pct": 2.12
+                    },
+                    {
+                        "product_id": 11,
+                        "frecuencia_absoluta": 221968,
+                        "frecuencia_relativa_pct": 2.1
+                    },
+                    {
+                        "product_id": 9,
+                        "frecuencia_absoluta": 212480,
+                        "frecuencia_relativa_pct": 2.01
+                    },
+                    {
+                        "product_id": 12,
+                        "frecuencia_absoluta": 210081,
+                        "frecuencia_relativa_pct": 1.98
+                    },
+                    {
+                        "product_id": 21,
+                        "frecuencia_absoluta": 202214,
+                        "frecuencia_relativa_pct": 1.91
+                    },
+                    {
+                        "product_id": 13,
+                        "frecuencia_absoluta": 185167,
+                        "frecuencia_relativa_pct": 1.75
+                    },
+                    {
+                        "product_id": 19,
+                        "frecuencia_absoluta": 183467,
+                        "frecuencia_relativa_pct": 1.73
+                    },
+                    {
+                        "product_id": 14,
+                        "frecuencia_absoluta": 179634,
+                        "frecuencia_relativa_pct": 1.7
+                    },
+                    {
+                        "product_id": 15,
+                        "frecuencia_absoluta": 173154,
+                        "frecuencia_relativa_pct": 1.63
+                    },
+                    {
+                        "product_id": 17,
+                        "frecuencia_absoluta": 166405,
+                        "frecuencia_relativa_pct": 1.57
+                    },
+                    {
+                        "product_id": 18,
+                        "frecuencia_absoluta": 166233,
+                        "frecuencia_relativa_pct": 1.57
+                    },
+                    {
+                        "product_id": 26,
+                        "frecuencia_absoluta": 151794,
+                        "frecuencia_relativa_pct": 1.43
+                    },
+                    {
+                        "product_id": 23,
+                        "frecuencia_absoluta": 145956,
+                        "frecuencia_relativa_pct": 1.38
+                    },
+                    {
+                        "product_id": 20,
+                        "frecuencia_absoluta": 141429,
+                        "frecuencia_relativa_pct": 1.34
+                    },
+                    {
+                        "product_id": 22,
+                        "frecuencia_absoluta": 136176,
+                        "frecuencia_relativa_pct": 1.29
+                    },
+                    {
+                        "product_id": 30,
+                        "frecuencia_absoluta": 133878,
+                        "frecuencia_relativa_pct": 1.26
+                    },
+                    {
+                        "product_id": 32,
+                        "frecuencia_absoluta": 130965,
+                        "frecuencia_relativa_pct": 1.24
+                    },
+                    {
+                        "product_id": 28,
+                        "frecuencia_absoluta": 126722,
+                        "frecuencia_relativa_pct": 1.2
+                    },
+                    {
+                        "product_id": 24,
+                        "frecuencia_absoluta": 122922,
+                        "frecuencia_relativa_pct": 1.16
+                    },
+                    {
+                        "product_id": 25,
+                        "frecuencia_absoluta": 121363,
+                        "frecuencia_relativa_pct": 1.15
+                    },
+                    {
+                        "product_id": 27,
+                        "frecuencia_absoluta": 113850,
+                        "frecuencia_relativa_pct": 1.07
+                    },
+                    {
+                        "product_id": 29,
+                        "frecuencia_absoluta": 113668,
+                        "frecuencia_relativa_pct": 1.07
+                    },
+                    {
+                        "product_id": 2,
+                        "frecuencia_absoluta": 113246,
+                        "frecuencia_relativa_pct": 1.07
+                    }
+                ]
+            },
+            "distribucion_temporal_mensual": [
+                {
+                    "year": 2013,
+                    "month": 1,
+                    "num_transacciones": 184916,
+                    "porcentaje": 16.67
+                },
+                {
+                    "year": 2013,
+                    "month": 2,
+                    "num_transacciones": 170771,
+                    "porcentaje": 15.4
+                },
+                {
+                    "year": 2013,
+                    "month": 3,
+                    "num_transacciones": 189313,
+                    "porcentaje": 17.07
+                },
+                {
+                    "year": 2013,
+                    "month": 4,
+                    "num_transacciones": 182632,
+                    "porcentaje": 16.47
+                },
+                {
+                    "year": 2013,
+                    "month": 5,
+                    "num_transacciones": 188199,
+                    "porcentaje": 16.97
+                },
+                {
+                    "year": 2013,
+                    "month": 6,
+                    "num_transacciones": 193156,
+                    "porcentaje": 17.42
+                }
+            ],
+            "distribucion_dia_semana": [
+                {
+                    "dia_semana": "Domingo",
+                    "num_transacciones": 191406,
+                    "porcentaje": 17.26
+                },
+                {
+                    "dia_semana": "Lunes",
+                    "num_transacciones": 142445,
+                    "porcentaje": 12.84
+                },
+                {
+                    "dia_semana": "Martes",
+                    "num_transacciones": 150739,
+                    "porcentaje": 13.59
+                },
+                {
+                    "dia_semana": "Miércoles",
+                    "num_transacciones": 137245,
+                    "porcentaje": 12.38
+                },
+                {
+                    "dia_semana": "Jueves",
+                    "num_transacciones": 158766,
+                    "porcentaje": 14.32
+                },
+                {
+                    "dia_semana": "Viernes",
+                    "num_transacciones": 139371,
+                    "porcentaje": 12.57
+                },
+                {
+                    "dia_semana": "Sábado",
+                    "num_transacciones": 189015,
+                    "porcentaje": 17.04
+                }
+            ],
+            "distribucion_por_tienda": [
+                {
+                    "store_id": 103,
+                    "num_transacciones": 407130,
+                    "porcentaje": 36.71
+                },
+                {
+                    "store_id": 102,
+                    "num_transacciones": 314286,
+                    "porcentaje": 28.34
+                },
+                {
+                    "store_id": 107,
+                    "num_transacciones": 254633,
+                    "porcentaje": 22.96
+                },
+                {
+                    "store_id": 110,
+                    "num_transacciones": 132938,
+                    "porcentaje": 11.99
+                }
+            ],
+            "tiempo_entre_compras": {
+                "promedio_global_dias": 26.39
+            },
+            "reglas_asociacion_top": [
+                {
+                    "antecedente": [
+                        "51"
+                    ],
+                    "consecuente": [
+                        "68"
+                    ],
+                    "confidence": 0.4253,
+                    "lift": 6.9544,
+                    "support": 0.0208
+                },
+                {
+                    "antecedente": [
+                        "68"
+                    ],
+                    "consecuente": [
+                        "51"
+                    ],
+                    "confidence": 0.3406,
+                    "lift": 6.9544,
+                    "support": 0.0208
+                },
+                {
+                    "antecedente": [
+                        "2",
+                        "6"
+                    ],
+                    "consecuente": [
+                        "1"
+                    ],
+                    "confidence": 0.5448,
+                    "lift": 6.8012,
+                    "support": 0.0226
+                },
+                {
+                    "antecedente": [
+                        "2",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "1"
+                    ],
+                    "confidence": 0.5423,
+                    "lift": 6.7688,
+                    "support": 0.0287
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "54"
+                    ],
+                    "confidence": 0.332,
+                    "lift": 6.6549,
+                    "support": 0.0231
+                },
+                {
+                    "antecedente": [
+                        "30",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "54"
+                    ],
+                    "confidence": 0.3264,
+                    "lift": 6.5426,
+                    "support": 0.0218
+                },
+                {
+                    "antecedente": [
+                        "1",
+                        "6"
+                    ],
+                    "consecuente": [
+                        "2"
+                    ],
+                    "confidence": 0.6564,
+                    "lift": 6.4284,
+                    "support": 0.0226
+                },
+                {
+                    "antecedente": [
+                        "17",
+                        "7",
+                        "4"
+                    ],
+                    "consecuente": [
+                        "68"
+                    ],
+                    "confidence": 0.3874,
+                    "lift": 6.3357,
+                    "support": 0.0222
+                },
+                {
+                    "antecedente": [
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "54"
+                    ],
+                    "confidence": 0.3124,
+                    "lift": 6.2621,
+                    "support": 0.0211
+                },
+                {
+                    "antecedente": [
+                        "1",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "2"
+                    ],
+                    "confidence": 0.6285,
+                    "lift": 6.1544,
+                    "support": 0.0287
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "54"
+                    ],
+                    "confidence": 0.3066,
+                    "lift": 6.1459,
+                    "support": 0.0223
+                },
+                {
+                    "antecedente": [
+                        "1",
+                        "10"
+                    ],
+                    "consecuente": [
+                        "2"
+                    ],
+                    "confidence": 0.6224,
+                    "lift": 6.0955,
+                    "support": 0.0225
+                },
+                {
+                    "antecedente": [
+                        "2",
+                        "10"
+                    ],
+                    "consecuente": [
+                        "1"
+                    ],
+                    "confidence": 0.4881,
+                    "lift": 6.0927,
+                    "support": 0.0225
+                },
+                {
+                    "antecedente": [
+                        "30",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "54"
+                    ],
+                    "confidence": 0.3023,
+                    "lift": 6.0591,
+                    "support": 0.022
+                },
+                {
+                    "antecedente": [
+                        "1",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "2"
+                    ],
+                    "confidence": 0.6174,
+                    "lift": 6.046,
+                    "support": 0.022
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "21",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6664,
+                    "lift": 6.0122,
+                    "support": 0.0202
+                },
+                {
+                    "antecedente": [
+                        "2",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "1"
+                    ],
+                    "confidence": 0.4787,
+                    "lift": 5.9752,
+                    "support": 0.022
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6605,
+                    "lift": 5.9592,
+                    "support": 0.0201
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "20",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6565,
+                    "lift": 5.9233,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "20",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6554,
+                    "lift": 5.913,
+                    "support": 0.0203
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "9"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6501,
+                    "lift": 5.8647,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "6",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6459,
+                    "lift": 5.8269,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "20",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6446,
+                    "lift": 5.8159,
+                    "support": 0.0228
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "11",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6444,
+                    "lift": 5.8141,
+                    "support": 0.0207
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6443,
+                    "lift": 5.8125,
+                    "support": 0.0232
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "11"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6423,
+                    "lift": 5.7951,
+                    "support": 0.0218
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "20",
+                        "6"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.641,
+                    "lift": 5.7827,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "11",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.639,
+                    "lift": 5.7654,
+                    "support": 0.0205
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "11",
+                        "3",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6379,
+                    "lift": 5.7547,
+                    "support": 0.0207
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "9",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6942,
+                    "lift": 5.7503,
+                    "support": 0.0201
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6364,
+                    "lift": 5.7418,
+                    "support": 0.0208
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6356,
+                    "lift": 5.7339,
+                    "support": 0.0234
+                },
+                {
+                    "antecedente": [
+                        "27",
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6919,
+                    "lift": 5.7314,
+                    "support": 0.02
+                },
+                {
+                    "antecedente": [
+                        "17",
+                        "7",
+                        "4"
+                    ],
+                    "consecuente": [
+                        "40"
+                    ],
+                    "confidence": 0.3897,
+                    "lift": 5.7248,
+                    "support": 0.0223
+                },
+                {
+                    "antecedente": [
+                        "32",
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6909,
+                    "lift": 5.7234,
+                    "support": 0.0224
+                },
+                {
+                    "antecedente": [
+                        "41",
+                        "6",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "31"
+                    ],
+                    "confidence": 0.502,
+                    "lift": 5.721,
+                    "support": 0.0205
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "9",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6329,
+                    "lift": 5.7103,
+                    "support": 0.0208
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "3",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.631,
+                    "lift": 5.6927,
+                    "support": 0.0211
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "9",
+                        "11"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6308,
+                    "lift": 5.691,
+                    "support": 0.0207
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "11",
+                        "6",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6292,
+                    "lift": 5.6764,
+                    "support": 0.0214
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6281,
+                    "lift": 5.6666,
+                    "support": 0.0201
+                },
+                {
+                    "antecedente": [
+                        "32",
+                        "9",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6834,
+                    "lift": 5.661,
+                    "support": 0.0205
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6267,
+                    "lift": 5.6539,
+                    "support": 0.0224
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6263,
+                    "lift": 5.6501,
+                    "support": 0.0259
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "9",
+                        "6",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6258,
+                    "lift": 5.6461,
+                    "support": 0.0202
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "6"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6258,
+                    "lift": 5.646,
+                    "support": 0.0232
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6798,
+                    "lift": 5.6312,
+                    "support": 0.0217
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "16",
+                        "3",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6237,
+                    "lift": 5.6268,
+                    "support": 0.0212
+                },
+                {
+                    "antecedente": [
+                        "32",
+                        "21",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.678,
+                    "lift": 5.616,
+                    "support": 0.0202
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "11",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6765,
+                    "lift": 5.6039,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "27",
+                        "20",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.621,
+                    "lift": 5.6027,
+                    "support": 0.0206
+                },
+                {
+                    "antecedente": [
+                        "24",
+                        "30",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.7115,
+                    "lift": 5.5788,
+                    "support": 0.0223
+                },
+                {
+                    "antecedente": [
+                        "23",
+                        "19",
+                        "4"
+                    ],
+                    "consecuente": [
+                        "29"
+                    ],
+                    "confidence": 0.5718,
+                    "lift": 5.5783,
+                    "support": 0.0207
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "23",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "27"
+                    ],
+                    "confidence": 0.5721,
+                    "lift": 5.5725,
+                    "support": 0.0207
+                },
+                {
+                    "antecedente": [
+                        "29",
+                        "7"
+                    ],
+                    "consecuente": [
+                        "68"
+                    ],
+                    "confidence": 0.3405,
+                    "lift": 5.5682,
+                    "support": 0.02
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "23",
+                        "6"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6171,
+                    "lift": 5.567,
+                    "support": 0.0214
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "6",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6168,
+                    "lift": 5.5643,
+                    "support": 0.0222
+                },
+                {
+                    "antecedente": [
+                        "30",
+                        "22",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6155,
+                    "lift": 5.5527,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "23",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "27"
+                    ],
+                    "confidence": 0.5697,
+                    "lift": 5.5498,
+                    "support": 0.0202
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "9"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.615,
+                    "lift": 5.5488,
+                    "support": 0.0224
+                },
+                {
+                    "antecedente": [
+                        "46",
+                        "20"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.615,
+                    "lift": 5.5487,
+                    "support": 0.0208
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "23",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6138,
+                    "lift": 5.5374,
+                    "support": 0.0243
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "10"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6137,
+                    "lift": 5.5367,
+                    "support": 0.0202
+                },
+                {
+                    "antecedente": [
+                        "14",
+                        "21",
+                        "11",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6132,
+                    "lift": 5.5319,
+                    "support": 0.0213
+                },
+                {
+                    "antecedente": [
+                        "14",
+                        "21",
+                        "9",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6676,
+                    "lift": 5.5305,
+                    "support": 0.0212
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "11"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6118,
+                    "lift": 5.5196,
+                    "support": 0.0236
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "23",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6117,
+                    "lift": 5.5185,
+                    "support": 0.0216
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "16",
+                        "6",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6116,
+                    "lift": 5.5179,
+                    "support": 0.0221
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "23",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6113,
+                    "lift": 5.5154,
+                    "support": 0.0221
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "9",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6109,
+                    "lift": 5.5114,
+                    "support": 0.0226
+                },
+                {
+                    "antecedente": [
+                        "30",
+                        "20",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6107,
+                    "lift": 5.51,
+                    "support": 0.0232
+                },
+                {
+                    "antecedente": [
+                        "24",
+                        "21",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.7026,
+                    "lift": 5.5094,
+                    "support": 0.0208
+                },
+                {
+                    "antecedente": [
+                        "44",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "31"
+                    ],
+                    "confidence": 0.4831,
+                    "lift": 5.5055,
+                    "support": 0.0216
+                },
+                {
+                    "antecedente": [
+                        "32",
+                        "20",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6102,
+                    "lift": 5.5049,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "21",
+                        "9",
+                        "11",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6641,
+                    "lift": 5.5011,
+                    "support": 0.0214
+                },
+                {
+                    "antecedente": [
+                        "14",
+                        "21",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6096,
+                    "lift": 5.4995,
+                    "support": 0.0212
+                },
+                {
+                    "antecedente": [
+                        "14",
+                        "11",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6095,
+                    "lift": 5.499,
+                    "support": 0.0214
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "14",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6638,
+                    "lift": 5.4988,
+                    "support": 0.0202
+                },
+                {
+                    "antecedente": [
+                        "24",
+                        "21",
+                        "11",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.7012,
+                    "lift": 5.4984,
+                    "support": 0.0207
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "9",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6093,
+                    "lift": 5.4968,
+                    "support": 0.0214
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6087,
+                    "lift": 5.4915,
+                    "support": 0.0237
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "6",
+                        "3",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6084,
+                    "lift": 5.4892,
+                    "support": 0.0233
+                },
+                {
+                    "antecedente": [
+                        "19",
+                        "7",
+                        "4",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "29"
+                    ],
+                    "confidence": 0.5626,
+                    "lift": 5.4887,
+                    "support": 0.0204
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "9",
+                        "6"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6083,
+                    "lift": 5.4878,
+                    "support": 0.0218
+                },
+                {
+                    "antecedente": [
+                        "24",
+                        "30",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.6991,
+                    "lift": 5.4821,
+                    "support": 0.0227
+                },
+                {
+                    "antecedente": [
+                        "26",
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6617,
+                    "lift": 5.4816,
+                    "support": 0.0209
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "31"
+                    ],
+                    "confidence": 0.4809,
+                    "lift": 5.4796,
+                    "support": 0.0201
+                },
+                {
+                    "antecedente": [
+                        "27",
+                        "24",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.6984,
+                    "lift": 5.4765,
+                    "support": 0.0206
+                },
+                {
+                    "antecedente": [
+                        "24",
+                        "14",
+                        "21",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.6982,
+                    "lift": 5.4751,
+                    "support": 0.0202
+                },
+                {
+                    "antecedente": [
+                        "32",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "31"
+                    ],
+                    "confidence": 0.4804,
+                    "lift": 5.4742,
+                    "support": 0.0212
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "20"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6061,
+                    "lift": 5.4682,
+                    "support": 0.0267
+                },
+                {
+                    "antecedente": [
+                        "22",
+                        "23",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6058,
+                    "lift": 5.4651,
+                    "support": 0.0215
+                },
+                {
+                    "antecedente": [
+                        "30",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "31"
+                    ],
+                    "confidence": 0.4795,
+                    "lift": 5.4639,
+                    "support": 0.0205
+                },
+                {
+                    "antecedente": [
+                        "9",
+                        "6",
+                        "3",
+                        "5"
+                    ],
+                    "consecuente": [
+                        "31"
+                    ],
+                    "confidence": 0.4792,
+                    "lift": 5.461,
+                    "support": 0.0217
+                },
+                {
+                    "antecedente": [
+                        "24",
+                        "23",
+                        "21"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.6964,
+                    "lift": 5.4605,
+                    "support": 0.0221
+                },
+                {
+                    "antecedente": [
+                        "27",
+                        "20",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6592,
+                    "lift": 5.4604,
+                    "support": 0.02
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "11",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "24"
+                    ],
+                    "confidence": 0.6051,
+                    "lift": 5.4592,
+                    "support": 0.0238
+                },
+                {
+                    "antecedente": [
+                        "37",
+                        "20",
+                        "16"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6589,
+                    "lift": 5.458,
+                    "support": 0.0205
+                },
+                {
+                    "antecedente": [
+                        "24",
+                        "21",
+                        "16",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "20"
+                    ],
+                    "confidence": 0.696,
+                    "lift": 5.4574,
+                    "support": 0.0237
+                },
+                {
+                    "antecedente": [
+                        "20",
+                        "21",
+                        "9",
+                        "3"
+                    ],
+                    "consecuente": [
+                        "30"
+                    ],
+                    "confidence": 0.6588,
+                    "lift": 5.4568,
+                    "support": 0.0215
+                }
+            ]
+        }
+    }
+}
